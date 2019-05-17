@@ -1,0 +1,5335 @@
+
+Lcd_Keypad_interface.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000013a0  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000026  00800060  000013a0  00001434  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000002  00800086  00800086  0000145a  2**0
+                  ALLOC
+  3 .stab         000006cc  00000000  00000000  0000145c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000085  00000000  00000000  00001b28  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_aranges 00000080  00000000  00000000  00001bb0  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001a1d  00000000  00000000  00001c30  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000261  00000000  00000000  0000364d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000ac0  00000000  00000000  000038ae  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000bc  00000000  00000000  00004370  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000001a0  00000000  00000000  0000442c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000023ce  00000000  00000000  000045cc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000038  00000000  00000000  0000699a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+       4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+       8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+       c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+      54:	11 24       	eor	r1, r1
+      56:	1f be       	out	0x3f, r1	; 63
+      58:	cf e5       	ldi	r28, 0x5F	; 95
+      5a:	d8 e0       	ldi	r29, 0x08	; 8
+      5c:	de bf       	out	0x3e, r29	; 62
+      5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+      60:	10 e0       	ldi	r17, 0x00	; 0
+      62:	a0 e6       	ldi	r26, 0x60	; 96
+      64:	b0 e0       	ldi	r27, 0x00	; 0
+      66:	e0 ea       	ldi	r30, 0xA0	; 160
+      68:	f3 e1       	ldi	r31, 0x13	; 19
+      6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+      6c:	05 90       	lpm	r0, Z+
+      6e:	0d 92       	st	X+, r0
+      70:	a6 38       	cpi	r26, 0x86	; 134
+      72:	b1 07       	cpc	r27, r17
+      74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+      76:	10 e0       	ldi	r17, 0x00	; 0
+      78:	a6 e8       	ldi	r26, 0x86	; 134
+      7a:	b0 e0       	ldi	r27, 0x00	; 0
+      7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+      7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+      80:	a8 38       	cpi	r26, 0x88	; 136
+      82:	b1 07       	cpc	r27, r17
+      84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+      86:	0e 94 02 01 	call	0x204	; 0x204 <main>
+      8a:	0c 94 ce 09 	jmp	0x139c	; 0x139c <_exit>
+
+0000008e <__bad_interrupt>:
+      8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <enable>:
+#define RW  6
+void enable()
+{
+	//_delay_us(0.5);
+	//LCD_C_P &=~(1<<EN);
+	LCD_C_P |=(1<<EN);
+      92:	ad 9a       	sbi	0x15, 5	; 21
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+      94:	82 e0       	ldi	r24, 0x02	; 2
+      96:	8a 95       	dec	r24
+      98:	f1 f7       	brne	.-4      	; 0x96 <enable+0x4>
+      9a:	00 c0       	rjmp	.+0      	; 0x9c <enable+0xa>
+	_delay_us(1);
+	LCD_C_P &=~(1<<EN);
+      9c:	ad 98       	cbi	0x15, 5	; 21
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+      9e:	8f e9       	ldi	r24, 0x9F	; 159
+      a0:	9f e0       	ldi	r25, 0x0F	; 15
+      a2:	01 97       	sbiw	r24, 0x01	; 1
+      a4:	f1 f7       	brne	.-4      	; 0xa2 <enable+0x10>
+      a6:	00 c0       	rjmp	.+0      	; 0xa8 <enable+0x16>
+      a8:	00 00       	nop
+	_delay_ms(2);//40
+}
+      aa:	08 95       	ret
+
+000000ac <Send_C>:
+void Send_C(unsigned char a ,unsigned char t)
+{
+      ac:	cf 93       	push	r28
+      ae:	c8 2f       	mov	r28, r24
+	LCD_C_P &= 0x5F;
+      b0:	85 b3       	in	r24, 0x15	; 21
+      b2:	8f 75       	andi	r24, 0x5F	; 95
+      b4:	85 bb       	out	0x15, r24	; 21
+	LCD_C_P |=(t<<RS);
+      b6:	85 b3       	in	r24, 0x15	; 21
+      b8:	67 95       	ror	r22
+      ba:	66 27       	eor	r22, r22
+      bc:	67 95       	ror	r22
+      be:	68 2b       	or	r22, r24
+      c0:	65 bb       	out	0x15, r22	; 21
+	LCD_C_P &=~(1<<RW);
+      c2:	ae 98       	cbi	0x15, 6	; 21
+	LCD_D_P &=0X0F;
+      c4:	88 b3       	in	r24, 0x18	; 24
+      c6:	8f 70       	andi	r24, 0x0F	; 15
+      c8:	88 bb       	out	0x18, r24	; 24
+	LCD_D_P |=(a &0xf0);
+      ca:	88 b3       	in	r24, 0x18	; 24
+      cc:	9c 2f       	mov	r25, r28
+      ce:	90 7f       	andi	r25, 0xF0	; 240
+      d0:	89 2b       	or	r24, r25
+      d2:	88 bb       	out	0x18, r24	; 24
+	enable();
+      d4:	0e 94 49 00 	call	0x92	; 0x92 <enable>
+	LCD_D_P &=0X0F;
+      d8:	88 b3       	in	r24, 0x18	; 24
+      da:	8f 70       	andi	r24, 0x0F	; 15
+      dc:	88 bb       	out	0x18, r24	; 24
+	LCD_D_P |=(a <<4);
+      de:	88 b3       	in	r24, 0x18	; 24
+      e0:	c2 95       	swap	r28
+      e2:	c0 7f       	andi	r28, 0xF0	; 240
+      e4:	c8 2b       	or	r28, r24
+      e6:	c8 bb       	out	0x18, r28	; 24
+	enable();
+      e8:	0e 94 49 00 	call	0x92	; 0x92 <enable>
+}
+      ec:	cf 91       	pop	r28
+      ee:	08 95       	ret
+
+000000f0 <LCD_X_Y>:
+
+LCD_X_Y(unsigned char x, unsigned char y)
+{
+	if(y==0)
+      f0:	66 23       	and	r22, r22
+      f2:	21 f4       	brne	.+8      	; 0xfc <LCD_X_Y+0xc>
+	{
+		Send_C((0x80+x),0);
+      f4:	80 58       	subi	r24, 0x80	; 128
+      f6:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+      fa:	08 95       	ret
+	}
+	
+	else if (y==1)
+      fc:	61 30       	cpi	r22, 0x01	; 1
+      fe:	21 f4       	brne	.+8      	; 0x108 <LCD_X_Y+0x18>
+	{
+		Send_C((0xC0+x),0);
+     100:	80 54       	subi	r24, 0x40	; 64
+     102:	60 e0       	ldi	r22, 0x00	; 0
+     104:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+	}
+}
+     108:	08 95       	ret
+
+0000010a <LCD_ST>:
+
+void LCD_ST(char *s)
+{
+     10a:	cf 93       	push	r28
+     10c:	df 93       	push	r29
+     10e:	ec 01       	movw	r28, r24
+	while(*s != '\0')
+     110:	88 81       	ld	r24, Y
+     112:	88 23       	and	r24, r24
+     114:	39 f0       	breq	.+14     	; 0x124 <LCD_ST+0x1a>
+	{
+		Send_C((0xC0+x),0);
+	}
+}
+
+void LCD_ST(char *s)
+     116:	21 96       	adiw	r28, 0x01	; 1
+{
+	while(*s != '\0')
+	{
+		Send_C(*s,1);
+     118:	61 e0       	ldi	r22, 0x01	; 1
+     11a:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+	}
+}
+
+void LCD_ST(char *s)
+{
+	while(*s != '\0')
+     11e:	89 91       	ld	r24, Y+
+     120:	88 23       	and	r24, r24
+     122:	d1 f7       	brne	.-12     	; 0x118 <LCD_ST+0xe>
+	{
+		Send_C(*s,1);
+		s++;
+	}
+}
+     124:	df 91       	pop	r29
+     126:	cf 91       	pop	r28
+     128:	08 95       	ret
+
+0000012a <LCD_INIT>:
+void LCD_INIT()
+{
+     12a:	ef 92       	push	r14
+     12c:	ff 92       	push	r15
+     12e:	0f 93       	push	r16
+     130:	1f 93       	push	r17
+     132:	cf 93       	push	r28
+     134:	df 93       	push	r29
+     136:	00 d0       	rcall	.+0      	; 0x138 <LCD_INIT+0xe>
+     138:	00 d0       	rcall	.+0      	; 0x13a <LCD_INIT+0x10>
+     13a:	0f 92       	push	r0
+     13c:	cd b7       	in	r28, 0x3d	; 61
+     13e:	de b7       	in	r29, 0x3e	; 62
+unsigned char com[]={0x33,0x32,0x28,0x0C,0x80};//0x80,0x06
+     140:	de 01       	movw	r26, r28
+     142:	11 96       	adiw	r26, 0x01	; 1
+     144:	e0 e6       	ldi	r30, 0x60	; 96
+     146:	f0 e0       	ldi	r31, 0x00	; 0
+     148:	85 e0       	ldi	r24, 0x05	; 5
+     14a:	01 90       	ld	r0, Z+
+     14c:	0d 92       	st	X+, r0
+     14e:	81 50       	subi	r24, 0x01	; 1
+     150:	e1 f7       	brne	.-8      	; 0x14a <LCD_INIT+0x20>
+     152:	8e 01       	movw	r16, r28
+     154:	0f 5f       	subi	r16, 0xFF	; 255
+     156:	1f 4f       	sbci	r17, 0xFF	; 255
+	{
+		Send_C(*s,1);
+		s++;
+	}
+}
+void LCD_INIT()
+     158:	0f 2e       	mov	r0, r31
+     15a:	f6 e0       	ldi	r31, 0x06	; 6
+     15c:	ef 2e       	mov	r14, r31
+     15e:	ff 24       	eor	r15, r15
+     160:	f0 2d       	mov	r31, r0
+     162:	ec 0e       	add	r14, r28
+     164:	fd 1e       	adc	r15, r29
+unsigned char com[]={0x33,0x32,0x28,0x0C,0x80};//0x80,0x06
+//_delay_ms(15);
+
+for(unsigned char i=0;i<5;i++)
+{
+	Send_C(com[i],0);
+     166:	f8 01       	movw	r30, r16
+     168:	81 91       	ld	r24, Z+
+     16a:	8f 01       	movw	r16, r30
+     16c:	60 e0       	ldi	r22, 0x00	; 0
+     16e:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+void LCD_INIT()
+{
+unsigned char com[]={0x33,0x32,0x28,0x0C,0x80};//0x80,0x06
+//_delay_ms(15);
+
+for(unsigned char i=0;i<5;i++)
+     172:	0e 15       	cp	r16, r14
+     174:	1f 05       	cpc	r17, r15
+     176:	b9 f7       	brne	.-18     	; 0x166 <LCD_INIT+0x3c>
+{
+	Send_C(com[i],0);
+}
+}
+     178:	0f 90       	pop	r0
+     17a:	0f 90       	pop	r0
+     17c:	0f 90       	pop	r0
+     17e:	0f 90       	pop	r0
+     180:	0f 90       	pop	r0
+     182:	df 91       	pop	r29
+     184:	cf 91       	pop	r28
+     186:	1f 91       	pop	r17
+     188:	0f 91       	pop	r16
+     18a:	ff 90       	pop	r15
+     18c:	ef 90       	pop	r14
+     18e:	08 95       	ret
+
+00000190 <contol_x_y>:
+ 
+ 
+  contol_x_y()
+ {
+	
+	 if((c==16)&&(n==0))
+     190:	80 91 87 00 	lds	r24, 0x0087
+     194:	80 31       	cpi	r24, 0x10	; 16
+     196:	39 f5       	brne	.+78     	; 0x1e6 <contol_x_y+0x56>
+     198:	80 91 86 00 	lds	r24, 0x0086
+     19c:	88 23       	and	r24, r24
+     19e:	61 f4       	brne	.+24     	; 0x1b8 <contol_x_y+0x28>
+	 {
+		 x=-1;
+		 c=0;
+     1a0:	10 92 87 00 	sts	0x0087, r1
+		 n++;
+     1a4:	81 e0       	ldi	r24, 0x01	; 1
+     1a6:	80 93 86 00 	sts	0x0086, r24
+	  LCD_X_Y(++x,n);
+     1aa:	10 92 84 00 	sts	0x0084, r1
+     1ae:	80 e0       	ldi	r24, 0x00	; 0
+     1b0:	61 e0       	ldi	r22, 0x01	; 1
+     1b2:	0e 94 78 00 	call	0xf0	; 0xf0 <LCD_X_Y>
+     1b6:	20 c0       	rjmp	.+64     	; 0x1f8 <contol_x_y+0x68>
+	 }
+	 
+	 else if((c==16)&&(n==1))
+     1b8:	81 30       	cpi	r24, 0x01	; 1
+     1ba:	a9 f4       	brne	.+42     	; 0x1e6 <contol_x_y+0x56>
+	 {
+		 c=0;
+     1bc:	10 92 87 00 	sts	0x0087, r1
+		 n--;
+     1c0:	10 92 86 00 	sts	0x0086, r1
+		 x=-1;
+     1c4:	8f ef       	ldi	r24, 0xFF	; 255
+     1c6:	80 93 84 00 	sts	0x0084, r24
+		Send_C(0x01,0);
+     1ca:	81 e0       	ldi	r24, 0x01	; 1
+     1cc:	60 e0       	ldi	r22, 0x00	; 0
+     1ce:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+		LCD_X_Y(++x,n); 
+     1d2:	80 91 84 00 	lds	r24, 0x0084
+     1d6:	8f 5f       	subi	r24, 0xFF	; 255
+     1d8:	80 93 84 00 	sts	0x0084, r24
+     1dc:	60 91 86 00 	lds	r22, 0x0086
+     1e0:	0e 94 78 00 	call	0xf0	; 0xf0 <LCD_X_Y>
+     1e4:	09 c0       	rjmp	.+18     	; 0x1f8 <contol_x_y+0x68>
+	 }
+	 
+	 else 
+	 {
+	 LCD_X_Y(++x,n);
+     1e6:	80 91 84 00 	lds	r24, 0x0084
+     1ea:	8f 5f       	subi	r24, 0xFF	; 255
+     1ec:	80 93 84 00 	sts	0x0084, r24
+     1f0:	60 91 86 00 	lds	r22, 0x0086
+     1f4:	0e 94 78 00 	call	0xf0	; 0xf0 <LCD_X_Y>
+	 }	 
+	 
+	 c++;	  
+     1f8:	80 91 87 00 	lds	r24, 0x0087
+     1fc:	8f 5f       	subi	r24, 0xFF	; 255
+     1fe:	80 93 87 00 	sts	0x0087, r24
+		
+					
+ }	
+     202:	08 95       	ret
+
+00000204 <main>:
+
+
+
+int main(void)
+{
+	DDRA =0xF0;
+     204:	80 ef       	ldi	r24, 0xF0	; 240
+     206:	8a bb       	out	0x1a, r24	; 26
+	DDRB |=0XFF;
+     208:	87 b3       	in	r24, 0x17	; 23
+     20a:	8f ef       	ldi	r24, 0xFF	; 255
+     20c:	87 bb       	out	0x17, r24	; 23
+	DDRC |=0xA1;
+     20e:	94 b3       	in	r25, 0x14	; 20
+     210:	91 6a       	ori	r25, 0xA1	; 161
+     212:	94 bb       	out	0x14, r25	; 20
+	DDRD =0xFF;
+     214:	81 bb       	out	0x11, r24	; 17
+
+   TCCR0 |=(1<<CS20)|(1<<CS00);  // prescaling  1024   
+     216:	83 b7       	in	r24, 0x33	; 51
+     218:	81 60       	ori	r24, 0x01	; 1
+     21a:	83 bf       	out	0x33, r24	; 51
+	'7','8','9',
+	'*','0','#'};
+
+
+
+LCD_INIT();
+     21c:	0e 94 95 00 	call	0x12a	; 0x12a <LCD_INIT>
+LCD_ST("Welcome to old");
+     220:	85 e6       	ldi	r24, 0x65	; 101
+     222:	90 e0       	ldi	r25, 0x00	; 0
+     224:	0e 94 85 00 	call	0x10a	; 0x10a <LCD_ST>
+Send_C(0xC0,0);
+     228:	80 ec       	ldi	r24, 0xC0	; 192
+     22a:	60 e0       	ldi	r22, 0x00	; 0
+     22c:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+LCD_ST("phone keypad_^_");
+     230:	84 e7       	ldi	r24, 0x74	; 116
+     232:	90 e0       	ldi	r25, 0x00	; 0
+     234:	0e 94 85 00 	call	0x10a	; 0x10a <LCD_ST>
+     238:	8f ef       	ldi	r24, 0xFF	; 255
+     23a:	99 e6       	ldi	r25, 0x69	; 105
+     23c:	a8 e1       	ldi	r26, 0x18	; 24
+     23e:	81 50       	subi	r24, 0x01	; 1
+     240:	90 40       	sbci	r25, 0x00	; 0
+     242:	a0 40       	sbci	r26, 0x00	; 0
+     244:	e1 f7       	brne	.-8      	; 0x23e <main+0x3a>
+     246:	00 c0       	rjmp	.+0      	; 0x248 <main+0x44>
+     248:	00 00       	nop
+_delay_ms(1000);
+Send_C(0x01,0);
+     24a:	81 e0       	ldi	r24, 0x01	; 1
+     24c:	60 e0       	ldi	r22, 0x00	; 0
+     24e:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+
+	unsigned char c=0,r=0,x=0;
+     252:	d0 e0       	ldi	r29, 0x00	; 0
+     254:	22 24       	eor	r2, r2
+
+   TCCR0 |=(1<<CS20)|(1<<CS00);  // prescaling  1024   
+    
+	
+	
+	   unsigned char two=0,three=0,four=0,five=0,six=0,seven=0,eight=0,nine=0,ten=0,eleven=0,twelve=0,zero=0;
+     256:	33 24       	eor	r3, r3
+     258:	ff 24       	eor	r15, r15
+     25a:	dd 24       	eor	r13, r13
+     25c:	ee 24       	eor	r14, r14
+     25e:	cc 24       	eor	r12, r12
+     260:	bb 24       	eor	r11, r11
+     262:	aa 24       	eor	r10, r10
+     264:	99 24       	eor	r9, r9
+     266:	88 24       	eor	r8, r8
+
+	unsigned char c=0,r=0,x=0;
+    while(1)
+    {
+     TCNT0 =0 ;  //initialize counter
+	PORTA =0X0F;
+     268:	0f 2e       	mov	r0, r31
+     26a:	ff e0       	ldi	r31, 0x0F	; 15
+     26c:	6f 2e       	mov	r6, r31
+     26e:	f0 2d       	mov	r31, r0
+
+	  for(unsigned char i=4;i<8;i++)
+	  {
+		  PORTA &=0x0f;
+		  PORTA |=(~(1<<i))&0xF0;
+		  if((PINA&=0x0F)!=0x0F )
+     270:	0f 2e       	mov	r0, r31
+     272:	f5 e0       	ldi	r31, 0x05	; 5
+     274:	4f 2e       	mov	r4, r31
+     276:	55 24       	eor	r5, r5
+     278:	f0 2d       	mov	r31, r0
+	  
+
+	  for(unsigned char i=4;i<8;i++)
+	  {
+		  PORTA &=0x0f;
+		  PORTA |=(~(1<<i))&0xF0;
+     27a:	01 e0       	ldi	r16, 0x01	; 1
+     27c:	10 e0       	ldi	r17, 0x00	; 0
+	                                 first key
+	----------------------------------------------------------------------------------------------------------*/
+	
+	
+		
+	if ((c==0)&(j==0))
+     27e:	c1 e0       	ldi	r28, 0x01	; 1
+		
+		
+		  if (TCNT0 >= 80)
+		  {
+			  
+			  PORTD =0xFF;
+     280:	77 24       	eor	r7, r7
+     282:	7a 94       	dec	r7
+Send_C(0x01,0);
+
+	unsigned char c=0,r=0,x=0;
+    while(1)
+    {
+     TCNT0 =0 ;  //initialize counter
+     284:	12 be       	out	0x32, r1	; 50
+	PORTA =0X0F;
+     286:	6b ba       	out	0x1b, r6	; 27
+	
+	do{
+		while((PINA & 0X0F)==0x0f);
+     288:	89 b3       	in	r24, 0x19	; 25
+     28a:	8f 70       	andi	r24, 0x0F	; 15
+     28c:	8f 30       	cpi	r24, 0x0F	; 15
+     28e:	e1 f3       	breq	.-8      	; 0x288 <main+0x84>
+     290:	af ec       	ldi	r26, 0xCF	; 207
+     292:	b7 e0       	ldi	r27, 0x07	; 7
+     294:	11 97       	sbiw	r26, 0x01	; 1
+     296:	f1 f7       	brne	.-4      	; 0x294 <main+0x90>
+     298:	00 c0       	rjmp	.+0      	; 0x29a <main+0x96>
+     29a:	00 00       	nop
+		_delay_ms(1);
+	   }while((PINA & 0X0F)==0x0f);
+     29c:	89 b3       	in	r24, 0x19	; 25
+     29e:	8f 70       	andi	r24, 0x0F	; 15
+     2a0:	8f 30       	cpi	r24, 0x0F	; 15
+     2a2:	91 f3       	breq	.-28     	; 0x288 <main+0x84>
+
+	  
+
+	  for(unsigned char i=4;i<8;i++)
+	  {
+		  PORTA &=0x0f;
+     2a4:	8b b3       	in	r24, 0x1b	; 27
+     2a6:	8f 70       	andi	r24, 0x0F	; 15
+     2a8:	8b bb       	out	0x1b, r24	; 27
+		  PORTA |=(~(1<<i))&0xF0;
+     2aa:	8b b3       	in	r24, 0x1b	; 27
+     2ac:	80 6e       	ori	r24, 0xE0	; 224
+     2ae:	8b bb       	out	0x1b, r24	; 27
+		  if((PINA&=0x0F)!=0x0F )
+     2b0:	89 b3       	in	r24, 0x19	; 25
+     2b2:	8f 70       	andi	r24, 0x0F	; 15
+     2b4:	89 bb       	out	0x19, r24	; 25
+     2b6:	8f 30       	cpi	r24, 0x0F	; 15
+     2b8:	b9 f4       	brne	.+46     	; 0x2e8 <main+0xe4>
+     2ba:	c2 01       	movw	r24, r4
+     2bc:	58 2f       	mov	r21, r24
+
+	  
+
+	  for(unsigned char i=4;i<8;i++)
+	  {
+		  PORTA &=0x0f;
+     2be:	2b b3       	in	r18, 0x1b	; 27
+     2c0:	2f 70       	andi	r18, 0x0F	; 15
+     2c2:	2b bb       	out	0x1b, r18	; 27
+		  PORTA |=(~(1<<i))&0xF0;
+     2c4:	4b b3       	in	r20, 0x1b	; 27
+     2c6:	98 01       	movw	r18, r16
+     2c8:	08 2e       	mov	r0, r24
+     2ca:	02 c0       	rjmp	.+4      	; 0x2d0 <main+0xcc>
+     2cc:	22 0f       	add	r18, r18
+     2ce:	33 1f       	adc	r19, r19
+     2d0:	0a 94       	dec	r0
+     2d2:	e2 f7       	brpl	.-8      	; 0x2cc <main+0xc8>
+     2d4:	20 95       	com	r18
+     2d6:	20 7f       	andi	r18, 0xF0	; 240
+     2d8:	24 2b       	or	r18, r20
+     2da:	2b bb       	out	0x1b, r18	; 27
+		  if((PINA&=0x0F)!=0x0F )
+     2dc:	29 b3       	in	r18, 0x19	; 25
+     2de:	2f 70       	andi	r18, 0x0F	; 15
+     2e0:	29 bb       	out	0x19, r18	; 25
+     2e2:	2f 30       	cpi	r18, 0x0F	; 15
+     2e4:	51 f0       	breq	.+20     	; 0x2fa <main+0xf6>
+     2e6:	01 c0       	rjmp	.+2      	; 0x2ea <main+0xe6>
+     2e8:	54 e0       	ldi	r21, 0x04	; 4
+		  {
+			  r= PINA & 0x0F;
+     2ea:	d9 b3       	in	r29, 0x19	; 25
+     2ec:	df 70       	andi	r29, 0x0F	; 15
+			  c=7-i;
+     2ee:	0f 2e       	mov	r0, r31
+     2f0:	f7 e0       	ldi	r31, 0x07	; 7
+     2f2:	2f 2e       	mov	r2, r31
+     2f4:	f0 2d       	mov	r31, r0
+     2f6:	25 1a       	sub	r2, r21
+			  break;
+     2f8:	04 c0       	rjmp	.+8      	; 0x302 <main+0xfe>
+     2fa:	01 96       	adiw	r24, 0x01	; 1
+		_delay_ms(1);
+	   }while((PINA & 0X0F)==0x0f);
+
+	  
+
+	  for(unsigned char i=4;i<8;i++)
+     2fc:	88 30       	cpi	r24, 0x08	; 8
+     2fe:	91 05       	cpc	r25, r1
+     300:	e9 f6       	brne	.-70     	; 0x2bc <main+0xb8>
+	  }	
+
+	  for(unsigned char j=0;j<4;j++)
+	  {
+		  x=(~(1<<j))&0x0F;
+	  if(r==x)
+     302:	de 30       	cpi	r29, 0x0E	; 14
+     304:	69 f0       	breq	.+26     	; 0x320 <main+0x11c>
+     306:	dd 30       	cpi	r29, 0x0D	; 13
+     308:	39 f0       	breq	.+14     	; 0x318 <main+0x114>
+     30a:	db 30       	cpi	r29, 0x0B	; 11
+     30c:	39 f0       	breq	.+14     	; 0x31c <main+0x118>
+     30e:	d7 30       	cpi	r29, 0x07	; 7
+     310:	09 f0       	breq	.+2      	; 0x314 <main+0x110>
+     312:	a5 c7       	rjmp	.+3914   	; 0x125e <__stack+0x9ff>
+     314:	93 e0       	ldi	r25, 0x03	; 3
+     316:	05 c0       	rjmp	.+10     	; 0x322 <main+0x11e>
+			  c=7-i;
+			  break;
+		  }
+	  }	
+
+	  for(unsigned char j=0;j<4;j++)
+     318:	9c 2f       	mov	r25, r28
+     31a:	03 c0       	rjmp	.+6      	; 0x322 <main+0x11e>
+     31c:	92 e0       	ldi	r25, 0x02	; 2
+     31e:	01 c0       	rjmp	.+2      	; 0x322 <main+0x11e>
+     320:	90 e0       	ldi	r25, 0x00	; 0
+	                                 first key
+	----------------------------------------------------------------------------------------------------------*/
+	
+	
+		
+	if ((c==0)&(j==0))
+     322:	8c 2f       	mov	r24, r28
+     324:	21 10       	cpse	r2, r1
+     326:	80 e0       	ldi	r24, 0x00	; 0
+     328:	2c 2f       	mov	r18, r28
+     32a:	91 11       	cpse	r25, r1
+     32c:	20 e0       	ldi	r18, 0x00	; 0
+     32e:	88 23       	and	r24, r24
+     330:	59 f1       	breq	.+86     	; 0x388 <main+0x184>
+     332:	22 23       	and	r18, r18
+     334:	49 f1       	breq	.+82     	; 0x388 <main+0x184>
+	{
+          
+	      //Send_C('1',1);	
+      
+      if (TCNT0 >= 80)
+     336:	82 b7       	in	r24, 0x32	; 50
+     338:	80 35       	cpi	r24, 0x50	; 80
+     33a:	e0 f0       	brcs	.+56     	; 0x374 <main+0x170>
+       {
+           
+            PORTD =0xFF;
+     33c:	72 ba       	out	0x12, r7	; 18
+     33e:	8f ef       	ldi	r24, 0xFF	; 255
+     340:	91 ee       	ldi	r25, 0xE1	; 225
+     342:	a4 e0       	ldi	r26, 0x04	; 4
+     344:	81 50       	subi	r24, 0x01	; 1
+     346:	90 40       	sbci	r25, 0x00	; 0
+     348:	a0 40       	sbci	r26, 0x00	; 0
+     34a:	e1 f7       	brne	.-8      	; 0x344 <main+0x140>
+     34c:	00 c0       	rjmp	.+0      	; 0x34e <main+0x14a>
+     34e:	00 00       	nop
+           _delay_ms(200);
+           PORTD =0;
+     350:	12 ba       	out	0x12, r1	; 18
+     352:	8f ef       	ldi	r24, 0xFF	; 255
+     354:	91 ee       	ldi	r25, 0xE1	; 225
+     356:	a4 e0       	ldi	r26, 0x04	; 4
+     358:	81 50       	subi	r24, 0x01	; 1
+     35a:	90 40       	sbci	r25, 0x00	; 0
+     35c:	a0 40       	sbci	r26, 0x00	; 0
+     35e:	e1 f7       	brne	.-8      	; 0x358 <main+0x154>
+     360:	00 c0       	rjmp	.+0      	; 0x362 <main+0x15e>
+     362:	00 00       	nop
+           _delay_ms(200);
+           contol_x_y();
+     364:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+           Send_C('1',1);
+     368:	81 e3       	ldi	r24, 0x31	; 49
+     36a:	6c 2f       	mov	r22, r28
+     36c:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+           TCNT0 =0;
+     370:	12 be       	out	0x32, r1	; 50
+     372:	75 c7       	rjmp	.+3818   	; 0x125e <__stack+0x9ff>
+		
+        
+		else
+        {    
+          
+		  Send_C('1',1);
+     374:	81 e3       	ldi	r24, 0x31	; 49
+     376:	6c 2f       	mov	r22, r28
+     378:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+          Send_C(0x10,0);
+     37c:	80 e1       	ldi	r24, 0x10	; 16
+     37e:	60 e0       	ldi	r22, 0x00	; 0
+     380:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+          //Send_C(0x07,0);
+          TCNT0 =0;
+     384:	12 be       	out	0x32, r1	; 50
+     386:	6b c7       	rjmp	.+3798   	; 0x125e <__stack+0x9ff>
+	
+	/*---------------------------------------------------------------------------------------------------------
+	                                 second key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==0))
+     388:	4c 2f       	mov	r20, r28
+     38a:	a1 e0       	ldi	r26, 0x01	; 1
+     38c:	2a 12       	cpse	r2, r26
+     38e:	40 e0       	ldi	r20, 0x00	; 0
+     390:	22 23       	and	r18, r18
+     392:	09 f4       	brne	.+2      	; 0x396 <main+0x192>
+     394:	c0 c0       	rjmp	.+384    	; 0x516 <main+0x312>
+     396:	44 23       	and	r20, r20
+     398:	09 f4       	brne	.+2      	; 0x39c <main+0x198>
+     39a:	bd c0       	rjmp	.+378    	; 0x516 <main+0x312>
+		ten=0;
+		eleven=0;
+		twelve=0;
+	
+		
+		if(two==0)
+     39c:	88 20       	and	r8, r8
+     39e:	49 f5       	brne	.+82     	; 0x3f2 <main+0x1ee>
+		{
+		   if (TCNT0 >= 80)
+     3a0:	82 b7       	in	r24, 0x32	; 50
+     3a2:	80 35       	cpi	r24, 0x50	; 80
+     3a4:	e0 f0       	brcs	.+56     	; 0x3de <main+0x1da>
+		   {
+			   
+			   PORTD =0xFF;
+     3a6:	72 ba       	out	0x12, r7	; 18
+     3a8:	8f ef       	ldi	r24, 0xFF	; 255
+     3aa:	91 ee       	ldi	r25, 0xE1	; 225
+     3ac:	a4 e0       	ldi	r26, 0x04	; 4
+     3ae:	81 50       	subi	r24, 0x01	; 1
+     3b0:	90 40       	sbci	r25, 0x00	; 0
+     3b2:	a0 40       	sbci	r26, 0x00	; 0
+     3b4:	e1 f7       	brne	.-8      	; 0x3ae <main+0x1aa>
+     3b6:	00 c0       	rjmp	.+0      	; 0x3b8 <main+0x1b4>
+     3b8:	00 00       	nop
+			   _delay_ms(200);
+			   PORTD =0;
+     3ba:	12 ba       	out	0x12, r1	; 18
+     3bc:	8f ef       	ldi	r24, 0xFF	; 255
+     3be:	91 ee       	ldi	r25, 0xE1	; 225
+     3c0:	a4 e0       	ldi	r26, 0x04	; 4
+     3c2:	81 50       	subi	r24, 0x01	; 1
+     3c4:	90 40       	sbci	r25, 0x00	; 0
+     3c6:	a0 40       	sbci	r26, 0x00	; 0
+     3c8:	e1 f7       	brne	.-8      	; 0x3c2 <main+0x1be>
+     3ca:	00 c0       	rjmp	.+0      	; 0x3cc <main+0x1c8>
+     3cc:	00 00       	nop
+			   _delay_ms(200);
+			   contol_x_y();
+     3ce:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+			   Send_C('2',1);
+     3d2:	82 e3       	ldi	r24, 0x32	; 50
+     3d4:	6c 2f       	mov	r22, r28
+     3d6:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   TCNT0 =0;
+     3da:	12 be       	out	0x32, r1	; 50
+     3dc:	45 c7       	rjmp	.+3722   	; 0x1268 <__stack+0xa09>
+		   
+		   
+		   else
+		   {
+			   
+			   Send_C('2',1);
+     3de:	82 e3       	ldi	r24, 0x32	; 50
+     3e0:	6c 2f       	mov	r22, r28
+     3e2:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   Send_C(0x10,0);
+     3e6:	80 e1       	ldi	r24, 0x10	; 16
+     3e8:	60 e0       	ldi	r22, 0x00	; 0
+     3ea:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   //Send_C(0x07,0);
+			   TCNT0 =0;
+     3ee:	12 be       	out	0x32, r1	; 50
+     3f0:	8d c7       	rjmp	.+3866   	; 0x130c <__stack+0xaad>
+		   }
+           
+           	
+		}	
+		
+		else if(two==1)
+     3f2:	91 e0       	ldi	r25, 0x01	; 1
+     3f4:	89 16       	cp	r8, r25
+     3f6:	49 f5       	brne	.+82     	; 0x44a <main+0x246>
+		{
+		   if (TCNT0 >= 80)
+     3f8:	82 b7       	in	r24, 0x32	; 50
+     3fa:	80 35       	cpi	r24, 0x50	; 80
+     3fc:	e0 f0       	brcs	.+56     	; 0x436 <main+0x232>
+		   {
+			   
+			   PORTD =0xFF;
+     3fe:	72 ba       	out	0x12, r7	; 18
+     400:	8f ef       	ldi	r24, 0xFF	; 255
+     402:	91 ee       	ldi	r25, 0xE1	; 225
+     404:	a4 e0       	ldi	r26, 0x04	; 4
+     406:	81 50       	subi	r24, 0x01	; 1
+     408:	90 40       	sbci	r25, 0x00	; 0
+     40a:	a0 40       	sbci	r26, 0x00	; 0
+     40c:	e1 f7       	brne	.-8      	; 0x406 <main+0x202>
+     40e:	00 c0       	rjmp	.+0      	; 0x410 <main+0x20c>
+     410:	00 00       	nop
+			   _delay_ms(200);
+			   PORTD =0;
+     412:	12 ba       	out	0x12, r1	; 18
+     414:	8f ef       	ldi	r24, 0xFF	; 255
+     416:	91 ee       	ldi	r25, 0xE1	; 225
+     418:	a4 e0       	ldi	r26, 0x04	; 4
+     41a:	81 50       	subi	r24, 0x01	; 1
+     41c:	90 40       	sbci	r25, 0x00	; 0
+     41e:	a0 40       	sbci	r26, 0x00	; 0
+     420:	e1 f7       	brne	.-8      	; 0x41a <main+0x216>
+     422:	00 c0       	rjmp	.+0      	; 0x424 <main+0x220>
+     424:	00 00       	nop
+			   _delay_ms(200);
+			   contol_x_y();
+     426:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+			   Send_C('A',1);
+     42a:	81 e4       	ldi	r24, 0x41	; 65
+     42c:	6c 2f       	mov	r22, r28
+     42e:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   TCNT0 =0;
+     432:	12 be       	out	0x32, r1	; 50
+     434:	19 c7       	rjmp	.+3634   	; 0x1268 <__stack+0xa09>
+		   
+		   
+		   else
+		   {
+			   
+			   Send_C('A',1);
+     436:	81 e4       	ldi	r24, 0x41	; 65
+     438:	6c 2f       	mov	r22, r28
+     43a:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   Send_C(0x10,0);
+     43e:	80 e1       	ldi	r24, 0x10	; 16
+     440:	60 e0       	ldi	r22, 0x00	; 0
+     442:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   //Send_C(0x07,0);
+			   TCNT0 =0;
+     446:	12 be       	out	0x32, r1	; 50
+     448:	61 c7       	rjmp	.+3778   	; 0x130c <__stack+0xaad>
+		   }
+				
+		}
+		
+		else if (two==2)
+     44a:	92 e0       	ldi	r25, 0x02	; 2
+     44c:	89 16       	cp	r8, r25
+     44e:	49 f5       	brne	.+82     	; 0x4a2 <main+0x29e>
+		{
+			if (TCNT0 >= 80)
+     450:	82 b7       	in	r24, 0x32	; 50
+     452:	80 35       	cpi	r24, 0x50	; 80
+     454:	e0 f0       	brcs	.+56     	; 0x48e <main+0x28a>
+			{
+				
+				PORTD =0xFF;
+     456:	72 ba       	out	0x12, r7	; 18
+     458:	8f ef       	ldi	r24, 0xFF	; 255
+     45a:	91 ee       	ldi	r25, 0xE1	; 225
+     45c:	a4 e0       	ldi	r26, 0x04	; 4
+     45e:	81 50       	subi	r24, 0x01	; 1
+     460:	90 40       	sbci	r25, 0x00	; 0
+     462:	a0 40       	sbci	r26, 0x00	; 0
+     464:	e1 f7       	brne	.-8      	; 0x45e <main+0x25a>
+     466:	00 c0       	rjmp	.+0      	; 0x468 <main+0x264>
+     468:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     46a:	12 ba       	out	0x12, r1	; 18
+     46c:	8f ef       	ldi	r24, 0xFF	; 255
+     46e:	91 ee       	ldi	r25, 0xE1	; 225
+     470:	a4 e0       	ldi	r26, 0x04	; 4
+     472:	81 50       	subi	r24, 0x01	; 1
+     474:	90 40       	sbci	r25, 0x00	; 0
+     476:	a0 40       	sbci	r26, 0x00	; 0
+     478:	e1 f7       	brne	.-8      	; 0x472 <main+0x26e>
+     47a:	00 c0       	rjmp	.+0      	; 0x47c <main+0x278>
+     47c:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     47e:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('B',1);
+     482:	82 e4       	ldi	r24, 0x42	; 66
+     484:	6c 2f       	mov	r22, r28
+     486:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     48a:	12 be       	out	0x32, r1	; 50
+     48c:	ed c6       	rjmp	.+3546   	; 0x1268 <__stack+0xa09>
+			
+			
+			else
+			{
+				
+				Send_C('B',1);
+     48e:	82 e4       	ldi	r24, 0x42	; 66
+     490:	6c 2f       	mov	r22, r28
+     492:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     496:	80 e1       	ldi	r24, 0x10	; 16
+     498:	60 e0       	ldi	r22, 0x00	; 0
+     49a:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     49e:	12 be       	out	0x32, r1	; 50
+     4a0:	35 c7       	rjmp	.+3690   	; 0x130c <__stack+0xaad>
+			}
+			
+		}
+		
+		else if (two==3)
+     4a2:	93 e0       	ldi	r25, 0x03	; 3
+     4a4:	89 16       	cp	r8, r25
+     4a6:	49 f5       	brne	.+82     	; 0x4fa <main+0x2f6>
+		{
+			if (TCNT0 >= 80)
+     4a8:	82 b7       	in	r24, 0x32	; 50
+     4aa:	80 35       	cpi	r24, 0x50	; 80
+     4ac:	e0 f0       	brcs	.+56     	; 0x4e6 <main+0x2e2>
+			{
+				
+				PORTD =0xFF;
+     4ae:	72 ba       	out	0x12, r7	; 18
+     4b0:	8f ef       	ldi	r24, 0xFF	; 255
+     4b2:	91 ee       	ldi	r25, 0xE1	; 225
+     4b4:	a4 e0       	ldi	r26, 0x04	; 4
+     4b6:	81 50       	subi	r24, 0x01	; 1
+     4b8:	90 40       	sbci	r25, 0x00	; 0
+     4ba:	a0 40       	sbci	r26, 0x00	; 0
+     4bc:	e1 f7       	brne	.-8      	; 0x4b6 <main+0x2b2>
+     4be:	00 c0       	rjmp	.+0      	; 0x4c0 <main+0x2bc>
+     4c0:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     4c2:	12 ba       	out	0x12, r1	; 18
+     4c4:	8f ef       	ldi	r24, 0xFF	; 255
+     4c6:	91 ee       	ldi	r25, 0xE1	; 225
+     4c8:	a4 e0       	ldi	r26, 0x04	; 4
+     4ca:	81 50       	subi	r24, 0x01	; 1
+     4cc:	90 40       	sbci	r25, 0x00	; 0
+     4ce:	a0 40       	sbci	r26, 0x00	; 0
+     4d0:	e1 f7       	brne	.-8      	; 0x4ca <main+0x2c6>
+     4d2:	00 c0       	rjmp	.+0      	; 0x4d4 <main+0x2d0>
+     4d4:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     4d6:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('C',1);
+     4da:	83 e4       	ldi	r24, 0x43	; 67
+     4dc:	6c 2f       	mov	r22, r28
+     4de:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     4e2:	12 be       	out	0x32, r1	; 50
+     4e4:	0f c0       	rjmp	.+30     	; 0x504 <main+0x300>
+			
+			
+			else
+			{
+				
+				Send_C('C',1);
+     4e6:	83 e4       	ldi	r24, 0x43	; 67
+     4e8:	6c 2f       	mov	r22, r28
+     4ea:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     4ee:	80 e1       	ldi	r24, 0x10	; 16
+     4f0:	60 e0       	ldi	r22, 0x00	; 0
+     4f2:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     4f6:	12 be       	out	0x32, r1	; 50
+     4f8:	05 c0       	rjmp	.+10     	; 0x504 <main+0x300>
+			}
+		}
+			
+		
+		two++;
+     4fa:	83 94       	inc	r8
+		
+		if (two==4)
+     4fc:	94 e0       	ldi	r25, 0x04	; 4
+     4fe:	89 16       	cp	r8, r25
+     500:	09 f0       	breq	.+2      	; 0x504 <main+0x300>
+     502:	64 c6       	rjmp	.+3272   	; 0x11cc <__stack+0x96d>
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+     504:	ff 24       	eor	r15, r15
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+     506:	dd 24       	eor	r13, r13
+		
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+     508:	ee 24       	eor	r14, r14
+	{
+		
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+     50a:	cc 24       	eor	r12, r12
+	else if ((c==1) & (j==0))
+	{
+		
+		three=0;
+		four=0;
+		five=0;
+     50c:	bb 24       	eor	r11, r11
+
+	else if ((c==1) & (j==0))
+	{
+		
+		three=0;
+		four=0;
+     50e:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==0))
+	{
+		
+		three=0;
+     510:	99 24       	eor	r9, r9
+		
+		two++;
+		
+		if (two==4)
+		{
+			two=0;
+     512:	88 24       	eor	r8, r8
+     514:	a4 c6       	rjmp	.+3400   	; 0x125e <__stack+0x9ff>
+	}
+	
+	/*---------------------------------------------------------------------------------------------------------
+	                                 third key
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==2) & (j==0))
+     516:	3c 2f       	mov	r19, r28
+     518:	a2 e0       	ldi	r26, 0x02	; 2
+     51a:	2a 12       	cpse	r2, r26
+     51c:	30 e0       	ldi	r19, 0x00	; 0
+     51e:	22 23       	and	r18, r18
+     520:	09 f4       	brne	.+2      	; 0x524 <main+0x320>
+     522:	c0 c0       	rjmp	.+384    	; 0x6a4 <main+0x4a0>
+     524:	33 23       	and	r19, r19
+     526:	09 f4       	brne	.+2      	; 0x52a <main+0x326>
+     528:	bd c0       	rjmp	.+378    	; 0x6a4 <main+0x4a0>
+		ten=0;
+		eleven=0;
+		twelve=0;
+		
+		
+		if(three==0)
+     52a:	99 20       	and	r9, r9
+     52c:	49 f5       	brne	.+82     	; 0x580 <main+0x37c>
+		{
+			if (TCNT0 >= 80)
+     52e:	82 b7       	in	r24, 0x32	; 50
+     530:	80 35       	cpi	r24, 0x50	; 80
+     532:	e0 f0       	brcs	.+56     	; 0x56c <main+0x368>
+			{
+				
+				PORTD =0xFF;
+     534:	72 ba       	out	0x12, r7	; 18
+     536:	8f ef       	ldi	r24, 0xFF	; 255
+     538:	91 ee       	ldi	r25, 0xE1	; 225
+     53a:	a4 e0       	ldi	r26, 0x04	; 4
+     53c:	81 50       	subi	r24, 0x01	; 1
+     53e:	90 40       	sbci	r25, 0x00	; 0
+     540:	a0 40       	sbci	r26, 0x00	; 0
+     542:	e1 f7       	brne	.-8      	; 0x53c <main+0x338>
+     544:	00 c0       	rjmp	.+0      	; 0x546 <main+0x342>
+     546:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     548:	12 ba       	out	0x12, r1	; 18
+     54a:	8f ef       	ldi	r24, 0xFF	; 255
+     54c:	91 ee       	ldi	r25, 0xE1	; 225
+     54e:	a4 e0       	ldi	r26, 0x04	; 4
+     550:	81 50       	subi	r24, 0x01	; 1
+     552:	90 40       	sbci	r25, 0x00	; 0
+     554:	a0 40       	sbci	r26, 0x00	; 0
+     556:	e1 f7       	brne	.-8      	; 0x550 <main+0x34c>
+     558:	00 c0       	rjmp	.+0      	; 0x55a <main+0x356>
+     55a:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     55c:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('3',1);
+     560:	83 e3       	ldi	r24, 0x33	; 51
+     562:	6c 2f       	mov	r22, r28
+     564:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     568:	12 be       	out	0x32, r1	; 50
+     56a:	87 c6       	rjmp	.+3342   	; 0x127a <__stack+0xa1b>
+			
+			
+			else
+			{
+				
+				Send_C('3',1);
+     56c:	83 e3       	ldi	r24, 0x33	; 51
+     56e:	6c 2f       	mov	r22, r28
+     570:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     574:	80 e1       	ldi	r24, 0x10	; 16
+     576:	60 e0       	ldi	r22, 0x00	; 0
+     578:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     57c:	12 be       	out	0x32, r1	; 50
+     57e:	cf c6       	rjmp	.+3486   	; 0x131e <__stack+0xabf>
+			}
+		}
+		
+		else if(three==1)
+     580:	91 e0       	ldi	r25, 0x01	; 1
+     582:	99 16       	cp	r9, r25
+     584:	49 f5       	brne	.+82     	; 0x5d8 <main+0x3d4>
+		{
+			if (TCNT0 >= 80)
+     586:	82 b7       	in	r24, 0x32	; 50
+     588:	80 35       	cpi	r24, 0x50	; 80
+     58a:	e0 f0       	brcs	.+56     	; 0x5c4 <main+0x3c0>
+			{
+				
+				PORTD =0xFF;
+     58c:	72 ba       	out	0x12, r7	; 18
+     58e:	8f ef       	ldi	r24, 0xFF	; 255
+     590:	91 ee       	ldi	r25, 0xE1	; 225
+     592:	a4 e0       	ldi	r26, 0x04	; 4
+     594:	81 50       	subi	r24, 0x01	; 1
+     596:	90 40       	sbci	r25, 0x00	; 0
+     598:	a0 40       	sbci	r26, 0x00	; 0
+     59a:	e1 f7       	brne	.-8      	; 0x594 <main+0x390>
+     59c:	00 c0       	rjmp	.+0      	; 0x59e <main+0x39a>
+     59e:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     5a0:	12 ba       	out	0x12, r1	; 18
+     5a2:	8f ef       	ldi	r24, 0xFF	; 255
+     5a4:	91 ee       	ldi	r25, 0xE1	; 225
+     5a6:	a4 e0       	ldi	r26, 0x04	; 4
+     5a8:	81 50       	subi	r24, 0x01	; 1
+     5aa:	90 40       	sbci	r25, 0x00	; 0
+     5ac:	a0 40       	sbci	r26, 0x00	; 0
+     5ae:	e1 f7       	brne	.-8      	; 0x5a8 <main+0x3a4>
+     5b0:	00 c0       	rjmp	.+0      	; 0x5b2 <main+0x3ae>
+     5b2:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     5b4:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('D',1);
+     5b8:	84 e4       	ldi	r24, 0x44	; 68
+     5ba:	6c 2f       	mov	r22, r28
+     5bc:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     5c0:	12 be       	out	0x32, r1	; 50
+     5c2:	5b c6       	rjmp	.+3254   	; 0x127a <__stack+0xa1b>
+			
+			
+			else
+			{
+				
+				Send_C('D',1);
+     5c4:	84 e4       	ldi	r24, 0x44	; 68
+     5c6:	6c 2f       	mov	r22, r28
+     5c8:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     5cc:	80 e1       	ldi	r24, 0x10	; 16
+     5ce:	60 e0       	ldi	r22, 0x00	; 0
+     5d0:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     5d4:	12 be       	out	0x32, r1	; 50
+     5d6:	a3 c6       	rjmp	.+3398   	; 0x131e <__stack+0xabf>
+			}
+		}
+		
+		else if (three==2)
+     5d8:	92 e0       	ldi	r25, 0x02	; 2
+     5da:	99 16       	cp	r9, r25
+     5dc:	49 f5       	brne	.+82     	; 0x630 <main+0x42c>
+		{
+			if (TCNT0 >= 80)
+     5de:	82 b7       	in	r24, 0x32	; 50
+     5e0:	80 35       	cpi	r24, 0x50	; 80
+     5e2:	e0 f0       	brcs	.+56     	; 0x61c <main+0x418>
+			{
+				
+				PORTD =0xFF;
+     5e4:	72 ba       	out	0x12, r7	; 18
+     5e6:	8f ef       	ldi	r24, 0xFF	; 255
+     5e8:	91 ee       	ldi	r25, 0xE1	; 225
+     5ea:	a4 e0       	ldi	r26, 0x04	; 4
+     5ec:	81 50       	subi	r24, 0x01	; 1
+     5ee:	90 40       	sbci	r25, 0x00	; 0
+     5f0:	a0 40       	sbci	r26, 0x00	; 0
+     5f2:	e1 f7       	brne	.-8      	; 0x5ec <main+0x3e8>
+     5f4:	00 c0       	rjmp	.+0      	; 0x5f6 <main+0x3f2>
+     5f6:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     5f8:	12 ba       	out	0x12, r1	; 18
+     5fa:	8f ef       	ldi	r24, 0xFF	; 255
+     5fc:	91 ee       	ldi	r25, 0xE1	; 225
+     5fe:	a4 e0       	ldi	r26, 0x04	; 4
+     600:	81 50       	subi	r24, 0x01	; 1
+     602:	90 40       	sbci	r25, 0x00	; 0
+     604:	a0 40       	sbci	r26, 0x00	; 0
+     606:	e1 f7       	brne	.-8      	; 0x600 <main+0x3fc>
+     608:	00 c0       	rjmp	.+0      	; 0x60a <main+0x406>
+     60a:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     60c:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('E',1);
+     610:	85 e4       	ldi	r24, 0x45	; 69
+     612:	6c 2f       	mov	r22, r28
+     614:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     618:	12 be       	out	0x32, r1	; 50
+     61a:	2f c6       	rjmp	.+3166   	; 0x127a <__stack+0xa1b>
+			
+			
+			else
+			{
+				
+				Send_C('E',1);
+     61c:	85 e4       	ldi	r24, 0x45	; 69
+     61e:	6c 2f       	mov	r22, r28
+     620:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     624:	80 e1       	ldi	r24, 0x10	; 16
+     626:	60 e0       	ldi	r22, 0x00	; 0
+     628:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     62c:	12 be       	out	0x32, r1	; 50
+     62e:	77 c6       	rjmp	.+3310   	; 0x131e <__stack+0xabf>
+			}
+		}
+		
+		else if (three==3)
+     630:	93 e0       	ldi	r25, 0x03	; 3
+     632:	99 16       	cp	r9, r25
+     634:	49 f5       	brne	.+82     	; 0x688 <main+0x484>
+		{
+			if (TCNT0 >= 80)
+     636:	82 b7       	in	r24, 0x32	; 50
+     638:	80 35       	cpi	r24, 0x50	; 80
+     63a:	e0 f0       	brcs	.+56     	; 0x674 <main+0x470>
+			{
+				
+				PORTD =0xFF;
+     63c:	72 ba       	out	0x12, r7	; 18
+     63e:	8f ef       	ldi	r24, 0xFF	; 255
+     640:	91 ee       	ldi	r25, 0xE1	; 225
+     642:	a4 e0       	ldi	r26, 0x04	; 4
+     644:	81 50       	subi	r24, 0x01	; 1
+     646:	90 40       	sbci	r25, 0x00	; 0
+     648:	a0 40       	sbci	r26, 0x00	; 0
+     64a:	e1 f7       	brne	.-8      	; 0x644 <main+0x440>
+     64c:	00 c0       	rjmp	.+0      	; 0x64e <main+0x44a>
+     64e:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     650:	12 ba       	out	0x12, r1	; 18
+     652:	8f ef       	ldi	r24, 0xFF	; 255
+     654:	91 ee       	ldi	r25, 0xE1	; 225
+     656:	a4 e0       	ldi	r26, 0x04	; 4
+     658:	81 50       	subi	r24, 0x01	; 1
+     65a:	90 40       	sbci	r25, 0x00	; 0
+     65c:	a0 40       	sbci	r26, 0x00	; 0
+     65e:	e1 f7       	brne	.-8      	; 0x658 <main+0x454>
+     660:	00 c0       	rjmp	.+0      	; 0x662 <main+0x45e>
+     662:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     664:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('F',1);
+     668:	86 e4       	ldi	r24, 0x46	; 70
+     66a:	6c 2f       	mov	r22, r28
+     66c:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     670:	12 be       	out	0x32, r1	; 50
+     672:	0f c0       	rjmp	.+30     	; 0x692 <main+0x48e>
+			
+			
+			else
+			{
+				
+				Send_C('F',1);
+     674:	86 e4       	ldi	r24, 0x46	; 70
+     676:	6c 2f       	mov	r22, r28
+     678:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     67c:	80 e1       	ldi	r24, 0x10	; 16
+     67e:	60 e0       	ldi	r22, 0x00	; 0
+     680:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     684:	12 be       	out	0x32, r1	; 50
+     686:	05 c0       	rjmp	.+10     	; 0x692 <main+0x48e>
+			}
+		}
+		
+		
+		three++;
+     688:	93 94       	inc	r9
+		
+		if (three==4)
+     68a:	94 e0       	ldi	r25, 0x04	; 4
+     68c:	99 16       	cp	r9, r25
+     68e:	09 f0       	breq	.+2      	; 0x692 <main+0x48e>
+     690:	a5 c5       	rjmp	.+2890   	; 0x11dc <__stack+0x97d>
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+     692:	ff 24       	eor	r15, r15
+		two=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+     694:	dd 24       	eor	r13, r13
+		
+		two=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+     696:	ee 24       	eor	r14, r14
+	{
+		
+		two=0;
+		four=0;
+		five=0;
+		six=0;
+     698:	cc 24       	eor	r12, r12
+	else if ((c==2) & (j==0))
+	{
+		
+		two=0;
+		four=0;
+		five=0;
+     69a:	bb 24       	eor	r11, r11
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==2) & (j==0))
+	{
+		
+		two=0;
+		four=0;
+     69c:	aa 24       	eor	r10, r10
+		
+		three++;
+		
+		if (three==4)
+		{
+			three=0;
+     69e:	99 24       	eor	r9, r9
+	                                 third key
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==2) & (j==0))
+	{
+		
+		two=0;
+     6a0:	88 24       	eor	r8, r8
+     6a2:	dd c5       	rjmp	.+3002   	; 0x125e <__stack+0x9ff>
+	}
+	
+	/*---------------------------------------------------------------------------------------------------------
+	                                 fourth key
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==0) & (j==1))
+     6a4:	2c 2f       	mov	r18, r28
+     6a6:	91 30       	cpi	r25, 0x01	; 1
+     6a8:	09 f0       	breq	.+2      	; 0x6ac <main+0x4a8>
+     6aa:	20 e0       	ldi	r18, 0x00	; 0
+     6ac:	88 23       	and	r24, r24
+     6ae:	09 f4       	brne	.+2      	; 0x6b2 <main+0x4ae>
+     6b0:	c0 c0       	rjmp	.+384    	; 0x832 <main+0x62e>
+     6b2:	22 23       	and	r18, r18
+     6b4:	09 f4       	brne	.+2      	; 0x6b8 <main+0x4b4>
+     6b6:	bd c0       	rjmp	.+378    	; 0x832 <main+0x62e>
+		nine=0;
+		ten=0;
+		eleven=0;
+		twelve=0;
+		
+		if(four==0)
+     6b8:	aa 20       	and	r10, r10
+     6ba:	49 f5       	brne	.+82     	; 0x70e <main+0x50a>
+		{
+			if (TCNT0 >= 80)
+     6bc:	82 b7       	in	r24, 0x32	; 50
+     6be:	80 35       	cpi	r24, 0x50	; 80
+     6c0:	e0 f0       	brcs	.+56     	; 0x6fa <main+0x4f6>
+			{
+				
+				PORTD =0xFF;
+     6c2:	72 ba       	out	0x12, r7	; 18
+     6c4:	8f ef       	ldi	r24, 0xFF	; 255
+     6c6:	91 ee       	ldi	r25, 0xE1	; 225
+     6c8:	a4 e0       	ldi	r26, 0x04	; 4
+     6ca:	81 50       	subi	r24, 0x01	; 1
+     6cc:	90 40       	sbci	r25, 0x00	; 0
+     6ce:	a0 40       	sbci	r26, 0x00	; 0
+     6d0:	e1 f7       	brne	.-8      	; 0x6ca <main+0x4c6>
+     6d2:	00 c0       	rjmp	.+0      	; 0x6d4 <main+0x4d0>
+     6d4:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     6d6:	12 ba       	out	0x12, r1	; 18
+     6d8:	8f ef       	ldi	r24, 0xFF	; 255
+     6da:	91 ee       	ldi	r25, 0xE1	; 225
+     6dc:	a4 e0       	ldi	r26, 0x04	; 4
+     6de:	81 50       	subi	r24, 0x01	; 1
+     6e0:	90 40       	sbci	r25, 0x00	; 0
+     6e2:	a0 40       	sbci	r26, 0x00	; 0
+     6e4:	e1 f7       	brne	.-8      	; 0x6de <main+0x4da>
+     6e6:	00 c0       	rjmp	.+0      	; 0x6e8 <main+0x4e4>
+     6e8:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     6ea:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('4',1);
+     6ee:	84 e3       	ldi	r24, 0x34	; 52
+     6f0:	6c 2f       	mov	r22, r28
+     6f2:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     6f6:	12 be       	out	0x32, r1	; 50
+     6f8:	c9 c5       	rjmp	.+2962   	; 0x128c <__stack+0xa2d>
+			
+			
+			else
+			{
+				
+				Send_C('4',1);
+     6fa:	84 e3       	ldi	r24, 0x34	; 52
+     6fc:	6c 2f       	mov	r22, r28
+     6fe:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     702:	80 e1       	ldi	r24, 0x10	; 16
+     704:	60 e0       	ldi	r22, 0x00	; 0
+     706:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     70a:	12 be       	out	0x32, r1	; 50
+     70c:	11 c6       	rjmp	.+3106   	; 0x1330 <__stack+0xad1>
+			}
+		}
+		
+		else if(four==1)
+     70e:	91 e0       	ldi	r25, 0x01	; 1
+     710:	a9 16       	cp	r10, r25
+     712:	49 f5       	brne	.+82     	; 0x766 <main+0x562>
+		{
+			if (TCNT0 >= 80)
+     714:	82 b7       	in	r24, 0x32	; 50
+     716:	80 35       	cpi	r24, 0x50	; 80
+     718:	e0 f0       	brcs	.+56     	; 0x752 <main+0x54e>
+			{
+				
+				PORTD =0xFF;
+     71a:	72 ba       	out	0x12, r7	; 18
+     71c:	8f ef       	ldi	r24, 0xFF	; 255
+     71e:	91 ee       	ldi	r25, 0xE1	; 225
+     720:	a4 e0       	ldi	r26, 0x04	; 4
+     722:	81 50       	subi	r24, 0x01	; 1
+     724:	90 40       	sbci	r25, 0x00	; 0
+     726:	a0 40       	sbci	r26, 0x00	; 0
+     728:	e1 f7       	brne	.-8      	; 0x722 <main+0x51e>
+     72a:	00 c0       	rjmp	.+0      	; 0x72c <main+0x528>
+     72c:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     72e:	12 ba       	out	0x12, r1	; 18
+     730:	8f ef       	ldi	r24, 0xFF	; 255
+     732:	91 ee       	ldi	r25, 0xE1	; 225
+     734:	a4 e0       	ldi	r26, 0x04	; 4
+     736:	81 50       	subi	r24, 0x01	; 1
+     738:	90 40       	sbci	r25, 0x00	; 0
+     73a:	a0 40       	sbci	r26, 0x00	; 0
+     73c:	e1 f7       	brne	.-8      	; 0x736 <main+0x532>
+     73e:	00 c0       	rjmp	.+0      	; 0x740 <main+0x53c>
+     740:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     742:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('G',1);
+     746:	87 e4       	ldi	r24, 0x47	; 71
+     748:	6c 2f       	mov	r22, r28
+     74a:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     74e:	12 be       	out	0x32, r1	; 50
+     750:	9d c5       	rjmp	.+2874   	; 0x128c <__stack+0xa2d>
+			
+			
+			else
+			{
+				
+				Send_C('G',1);
+     752:	87 e4       	ldi	r24, 0x47	; 71
+     754:	6c 2f       	mov	r22, r28
+     756:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     75a:	80 e1       	ldi	r24, 0x10	; 16
+     75c:	60 e0       	ldi	r22, 0x00	; 0
+     75e:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     762:	12 be       	out	0x32, r1	; 50
+     764:	e5 c5       	rjmp	.+3018   	; 0x1330 <__stack+0xad1>
+			}
+		}
+		
+		else if (four==2)
+     766:	92 e0       	ldi	r25, 0x02	; 2
+     768:	a9 16       	cp	r10, r25
+     76a:	49 f5       	brne	.+82     	; 0x7be <main+0x5ba>
+		{
+			if (TCNT0 >= 80)
+     76c:	82 b7       	in	r24, 0x32	; 50
+     76e:	80 35       	cpi	r24, 0x50	; 80
+     770:	e0 f0       	brcs	.+56     	; 0x7aa <main+0x5a6>
+			{
+				
+				PORTD =0xFF;
+     772:	72 ba       	out	0x12, r7	; 18
+     774:	8f ef       	ldi	r24, 0xFF	; 255
+     776:	91 ee       	ldi	r25, 0xE1	; 225
+     778:	a4 e0       	ldi	r26, 0x04	; 4
+     77a:	81 50       	subi	r24, 0x01	; 1
+     77c:	90 40       	sbci	r25, 0x00	; 0
+     77e:	a0 40       	sbci	r26, 0x00	; 0
+     780:	e1 f7       	brne	.-8      	; 0x77a <main+0x576>
+     782:	00 c0       	rjmp	.+0      	; 0x784 <main+0x580>
+     784:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     786:	12 ba       	out	0x12, r1	; 18
+     788:	8f ef       	ldi	r24, 0xFF	; 255
+     78a:	91 ee       	ldi	r25, 0xE1	; 225
+     78c:	a4 e0       	ldi	r26, 0x04	; 4
+     78e:	81 50       	subi	r24, 0x01	; 1
+     790:	90 40       	sbci	r25, 0x00	; 0
+     792:	a0 40       	sbci	r26, 0x00	; 0
+     794:	e1 f7       	brne	.-8      	; 0x78e <main+0x58a>
+     796:	00 c0       	rjmp	.+0      	; 0x798 <main+0x594>
+     798:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     79a:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('H',1);
+     79e:	88 e4       	ldi	r24, 0x48	; 72
+     7a0:	6c 2f       	mov	r22, r28
+     7a2:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     7a6:	12 be       	out	0x32, r1	; 50
+     7a8:	71 c5       	rjmp	.+2786   	; 0x128c <__stack+0xa2d>
+			
+			
+			else
+			{
+				
+				Send_C('H',1);
+     7aa:	88 e4       	ldi	r24, 0x48	; 72
+     7ac:	6c 2f       	mov	r22, r28
+     7ae:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     7b2:	80 e1       	ldi	r24, 0x10	; 16
+     7b4:	60 e0       	ldi	r22, 0x00	; 0
+     7b6:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     7ba:	12 be       	out	0x32, r1	; 50
+     7bc:	b9 c5       	rjmp	.+2930   	; 0x1330 <__stack+0xad1>
+			}
+		}
+		
+		else if (four==3)
+     7be:	93 e0       	ldi	r25, 0x03	; 3
+     7c0:	a9 16       	cp	r10, r25
+     7c2:	49 f5       	brne	.+82     	; 0x816 <main+0x612>
+		{
+			if (TCNT0 >= 80)
+     7c4:	82 b7       	in	r24, 0x32	; 50
+     7c6:	80 35       	cpi	r24, 0x50	; 80
+     7c8:	e0 f0       	brcs	.+56     	; 0x802 <main+0x5fe>
+			{
+				
+				PORTD =0xFF;
+     7ca:	72 ba       	out	0x12, r7	; 18
+     7cc:	8f ef       	ldi	r24, 0xFF	; 255
+     7ce:	91 ee       	ldi	r25, 0xE1	; 225
+     7d0:	a4 e0       	ldi	r26, 0x04	; 4
+     7d2:	81 50       	subi	r24, 0x01	; 1
+     7d4:	90 40       	sbci	r25, 0x00	; 0
+     7d6:	a0 40       	sbci	r26, 0x00	; 0
+     7d8:	e1 f7       	brne	.-8      	; 0x7d2 <main+0x5ce>
+     7da:	00 c0       	rjmp	.+0      	; 0x7dc <main+0x5d8>
+     7dc:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     7de:	12 ba       	out	0x12, r1	; 18
+     7e0:	8f ef       	ldi	r24, 0xFF	; 255
+     7e2:	91 ee       	ldi	r25, 0xE1	; 225
+     7e4:	a4 e0       	ldi	r26, 0x04	; 4
+     7e6:	81 50       	subi	r24, 0x01	; 1
+     7e8:	90 40       	sbci	r25, 0x00	; 0
+     7ea:	a0 40       	sbci	r26, 0x00	; 0
+     7ec:	e1 f7       	brne	.-8      	; 0x7e6 <main+0x5e2>
+     7ee:	00 c0       	rjmp	.+0      	; 0x7f0 <main+0x5ec>
+     7f0:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     7f2:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('I',1);
+     7f6:	89 e4       	ldi	r24, 0x49	; 73
+     7f8:	6c 2f       	mov	r22, r28
+     7fa:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     7fe:	12 be       	out	0x32, r1	; 50
+     800:	0f c0       	rjmp	.+30     	; 0x820 <main+0x61c>
+			
+			
+			else
+			{
+				
+				Send_C('I',1);
+     802:	89 e4       	ldi	r24, 0x49	; 73
+     804:	6c 2f       	mov	r22, r28
+     806:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     80a:	80 e1       	ldi	r24, 0x10	; 16
+     80c:	60 e0       	ldi	r22, 0x00	; 0
+     80e:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     812:	12 be       	out	0x32, r1	; 50
+     814:	05 c0       	rjmp	.+10     	; 0x820 <main+0x61c>
+			}
+		}
+		
+		
+		four++;
+     816:	a3 94       	inc	r10
+		
+		if (four==4)
+     818:	94 e0       	ldi	r25, 0x04	; 4
+     81a:	a9 16       	cp	r10, r25
+     81c:	09 f0       	breq	.+2      	; 0x820 <main+0x61c>
+     81e:	e6 c4       	rjmp	.+2508   	; 0x11ec <__stack+0x98d>
+		three=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+     820:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+     822:	dd 24       	eor	r13, r13
+	{
+		two=0;
+		three=0;
+		five=0;
+		six=0;
+		seven=0;
+     824:	ee 24       	eor	r14, r14
+	else if ((c==0) & (j==1))
+	{
+		two=0;
+		three=0;
+		five=0;
+		six=0;
+     826:	cc 24       	eor	r12, r12
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==0) & (j==1))
+	{
+		two=0;
+		three=0;
+		five=0;
+     828:	bb 24       	eor	r11, r11
+		
+		four++;
+		
+		if (four==4)
+		{
+			four=0;
+     82a:	aa 24       	eor	r10, r10
+	                                 fourth key
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==0) & (j==1))
+	{
+		two=0;
+		three=0;
+     82c:	99 24       	eor	r9, r9
+	/*---------------------------------------------------------------------------------------------------------
+	                                 fourth key
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==0) & (j==1))
+	{
+		two=0;
+     82e:	88 24       	eor	r8, r8
+     830:	16 c5       	rjmp	.+2604   	; 0x125e <__stack+0x9ff>
+	
+	/*---------------------------------------------------------------------------------------------------------
+	                                 five key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==1))
+     832:	44 23       	and	r20, r20
+     834:	09 f4       	brne	.+2      	; 0x838 <main+0x634>
+     836:	c0 c0       	rjmp	.+384    	; 0x9b8 <__stack+0x159>
+     838:	22 23       	and	r18, r18
+     83a:	09 f4       	brne	.+2      	; 0x83e <main+0x63a>
+     83c:	bd c0       	rjmp	.+378    	; 0x9b8 <__stack+0x159>
+		nine=0;
+		ten=0;
+		eleven=0;
+		twelve=0;
+		
+		if(five==0)
+     83e:	bb 20       	and	r11, r11
+     840:	49 f5       	brne	.+82     	; 0x894 <__stack+0x35>
+		{
+		   if (TCNT0 >= 80)
+     842:	82 b7       	in	r24, 0x32	; 50
+     844:	80 35       	cpi	r24, 0x50	; 80
+     846:	e0 f0       	brcs	.+56     	; 0x880 <__stack+0x21>
+		   {
+			   
+			   PORTD =0xFF;
+     848:	72 ba       	out	0x12, r7	; 18
+     84a:	8f ef       	ldi	r24, 0xFF	; 255
+     84c:	91 ee       	ldi	r25, 0xE1	; 225
+     84e:	a4 e0       	ldi	r26, 0x04	; 4
+     850:	81 50       	subi	r24, 0x01	; 1
+     852:	90 40       	sbci	r25, 0x00	; 0
+     854:	a0 40       	sbci	r26, 0x00	; 0
+     856:	e1 f7       	brne	.-8      	; 0x850 <main+0x64c>
+     858:	00 c0       	rjmp	.+0      	; 0x85a <main+0x656>
+     85a:	00 00       	nop
+			   _delay_ms(200);
+			   PORTD =0;
+     85c:	12 ba       	out	0x12, r1	; 18
+     85e:	8f ef       	ldi	r24, 0xFF	; 255
+     860:	91 ee       	ldi	r25, 0xE1	; 225
+     862:	a4 e0       	ldi	r26, 0x04	; 4
+     864:	81 50       	subi	r24, 0x01	; 1
+     866:	90 40       	sbci	r25, 0x00	; 0
+     868:	a0 40       	sbci	r26, 0x00	; 0
+     86a:	e1 f7       	brne	.-8      	; 0x864 <__stack+0x5>
+     86c:	00 c0       	rjmp	.+0      	; 0x86e <__stack+0xf>
+     86e:	00 00       	nop
+			   _delay_ms(200);
+			   contol_x_y();
+     870:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+			   Send_C('5',1);
+     874:	85 e3       	ldi	r24, 0x35	; 53
+     876:	6c 2f       	mov	r22, r28
+     878:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   TCNT0 =0;
+     87c:	12 be       	out	0x32, r1	; 50
+     87e:	0f c5       	rjmp	.+2590   	; 0x129e <__stack+0xa3f>
+		   
+		   
+		   else
+		   {
+			   
+			   Send_C('5',1);
+     880:	85 e3       	ldi	r24, 0x35	; 53
+     882:	6c 2f       	mov	r22, r28
+     884:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   Send_C(0x10,0);
+     888:	80 e1       	ldi	r24, 0x10	; 16
+     88a:	60 e0       	ldi	r22, 0x00	; 0
+     88c:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   //Send_C(0x07,0);
+			   TCNT0 =0;
+     890:	12 be       	out	0x32, r1	; 50
+     892:	57 c5       	rjmp	.+2734   	; 0x1342 <__stack+0xae3>
+		   }	
+		}	
+		
+		else if(five==1)
+     894:	91 e0       	ldi	r25, 0x01	; 1
+     896:	b9 16       	cp	r11, r25
+     898:	49 f5       	brne	.+82     	; 0x8ec <__stack+0x8d>
+		{
+		  if (TCNT0 >= 80)
+     89a:	82 b7       	in	r24, 0x32	; 50
+     89c:	80 35       	cpi	r24, 0x50	; 80
+     89e:	e0 f0       	brcs	.+56     	; 0x8d8 <__stack+0x79>
+		  {
+			  
+			  PORTD =0xFF;
+     8a0:	72 ba       	out	0x12, r7	; 18
+     8a2:	8f ef       	ldi	r24, 0xFF	; 255
+     8a4:	91 ee       	ldi	r25, 0xE1	; 225
+     8a6:	a4 e0       	ldi	r26, 0x04	; 4
+     8a8:	81 50       	subi	r24, 0x01	; 1
+     8aa:	90 40       	sbci	r25, 0x00	; 0
+     8ac:	a0 40       	sbci	r26, 0x00	; 0
+     8ae:	e1 f7       	brne	.-8      	; 0x8a8 <__stack+0x49>
+     8b0:	00 c0       	rjmp	.+0      	; 0x8b2 <__stack+0x53>
+     8b2:	00 00       	nop
+			  _delay_ms(200);
+			  PORTD =0;
+     8b4:	12 ba       	out	0x12, r1	; 18
+     8b6:	8f ef       	ldi	r24, 0xFF	; 255
+     8b8:	91 ee       	ldi	r25, 0xE1	; 225
+     8ba:	a4 e0       	ldi	r26, 0x04	; 4
+     8bc:	81 50       	subi	r24, 0x01	; 1
+     8be:	90 40       	sbci	r25, 0x00	; 0
+     8c0:	a0 40       	sbci	r26, 0x00	; 0
+     8c2:	e1 f7       	brne	.-8      	; 0x8bc <__stack+0x5d>
+     8c4:	00 c0       	rjmp	.+0      	; 0x8c6 <__stack+0x67>
+     8c6:	00 00       	nop
+			  _delay_ms(200);
+			  contol_x_y();
+     8c8:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+			  Send_C('J',1);
+     8cc:	8a e4       	ldi	r24, 0x4A	; 74
+     8ce:	6c 2f       	mov	r22, r28
+     8d0:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  TCNT0 =0;
+     8d4:	12 be       	out	0x32, r1	; 50
+     8d6:	e3 c4       	rjmp	.+2502   	; 0x129e <__stack+0xa3f>
+		  
+		  
+		  else
+		  {
+			  
+			  Send_C('J',1);
+     8d8:	8a e4       	ldi	r24, 0x4A	; 74
+     8da:	6c 2f       	mov	r22, r28
+     8dc:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  Send_C(0x10,0);
+     8e0:	80 e1       	ldi	r24, 0x10	; 16
+     8e2:	60 e0       	ldi	r22, 0x00	; 0
+     8e4:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  //Send_C(0x07,0);
+			  TCNT0 =0;
+     8e8:	12 be       	out	0x32, r1	; 50
+     8ea:	2b c5       	rjmp	.+2646   	; 0x1342 <__stack+0xae3>
+		  }
+				
+		}
+		
+		else if (five==2)
+     8ec:	92 e0       	ldi	r25, 0x02	; 2
+     8ee:	b9 16       	cp	r11, r25
+     8f0:	49 f5       	brne	.+82     	; 0x944 <__stack+0xe5>
+		{
+			if (TCNT0 >= 80)
+     8f2:	82 b7       	in	r24, 0x32	; 50
+     8f4:	80 35       	cpi	r24, 0x50	; 80
+     8f6:	e0 f0       	brcs	.+56     	; 0x930 <__stack+0xd1>
+			{
+				
+				PORTD =0xFF;
+     8f8:	72 ba       	out	0x12, r7	; 18
+     8fa:	8f ef       	ldi	r24, 0xFF	; 255
+     8fc:	91 ee       	ldi	r25, 0xE1	; 225
+     8fe:	a4 e0       	ldi	r26, 0x04	; 4
+     900:	81 50       	subi	r24, 0x01	; 1
+     902:	90 40       	sbci	r25, 0x00	; 0
+     904:	a0 40       	sbci	r26, 0x00	; 0
+     906:	e1 f7       	brne	.-8      	; 0x900 <__stack+0xa1>
+     908:	00 c0       	rjmp	.+0      	; 0x90a <__stack+0xab>
+     90a:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     90c:	12 ba       	out	0x12, r1	; 18
+     90e:	8f ef       	ldi	r24, 0xFF	; 255
+     910:	91 ee       	ldi	r25, 0xE1	; 225
+     912:	a4 e0       	ldi	r26, 0x04	; 4
+     914:	81 50       	subi	r24, 0x01	; 1
+     916:	90 40       	sbci	r25, 0x00	; 0
+     918:	a0 40       	sbci	r26, 0x00	; 0
+     91a:	e1 f7       	brne	.-8      	; 0x914 <__stack+0xb5>
+     91c:	00 c0       	rjmp	.+0      	; 0x91e <__stack+0xbf>
+     91e:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     920:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('K',1);
+     924:	8b e4       	ldi	r24, 0x4B	; 75
+     926:	6c 2f       	mov	r22, r28
+     928:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     92c:	12 be       	out	0x32, r1	; 50
+     92e:	b7 c4       	rjmp	.+2414   	; 0x129e <__stack+0xa3f>
+			
+			
+			else
+			{
+				
+				Send_C('K',1);
+     930:	8b e4       	ldi	r24, 0x4B	; 75
+     932:	6c 2f       	mov	r22, r28
+     934:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     938:	80 e1       	ldi	r24, 0x10	; 16
+     93a:	60 e0       	ldi	r22, 0x00	; 0
+     93c:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     940:	12 be       	out	0x32, r1	; 50
+     942:	ff c4       	rjmp	.+2558   	; 0x1342 <__stack+0xae3>
+			}
+			
+		}
+		
+		else if (five==3)
+     944:	93 e0       	ldi	r25, 0x03	; 3
+     946:	b9 16       	cp	r11, r25
+     948:	49 f5       	brne	.+82     	; 0x99c <__stack+0x13d>
+		{
+			if (TCNT0 >= 80)
+     94a:	82 b7       	in	r24, 0x32	; 50
+     94c:	80 35       	cpi	r24, 0x50	; 80
+     94e:	e0 f0       	brcs	.+56     	; 0x988 <__stack+0x129>
+			{
+				
+				PORTD =0xFF;
+     950:	72 ba       	out	0x12, r7	; 18
+     952:	8f ef       	ldi	r24, 0xFF	; 255
+     954:	91 ee       	ldi	r25, 0xE1	; 225
+     956:	a4 e0       	ldi	r26, 0x04	; 4
+     958:	81 50       	subi	r24, 0x01	; 1
+     95a:	90 40       	sbci	r25, 0x00	; 0
+     95c:	a0 40       	sbci	r26, 0x00	; 0
+     95e:	e1 f7       	brne	.-8      	; 0x958 <__stack+0xf9>
+     960:	00 c0       	rjmp	.+0      	; 0x962 <__stack+0x103>
+     962:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     964:	12 ba       	out	0x12, r1	; 18
+     966:	8f ef       	ldi	r24, 0xFF	; 255
+     968:	91 ee       	ldi	r25, 0xE1	; 225
+     96a:	a4 e0       	ldi	r26, 0x04	; 4
+     96c:	81 50       	subi	r24, 0x01	; 1
+     96e:	90 40       	sbci	r25, 0x00	; 0
+     970:	a0 40       	sbci	r26, 0x00	; 0
+     972:	e1 f7       	brne	.-8      	; 0x96c <__stack+0x10d>
+     974:	00 c0       	rjmp	.+0      	; 0x976 <__stack+0x117>
+     976:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     978:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('L',1);
+     97c:	8c e4       	ldi	r24, 0x4C	; 76
+     97e:	6c 2f       	mov	r22, r28
+     980:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     984:	12 be       	out	0x32, r1	; 50
+     986:	0f c0       	rjmp	.+30     	; 0x9a6 <__stack+0x147>
+			
+			
+			else
+			{
+				
+				Send_C('L',1);
+     988:	8c e4       	ldi	r24, 0x4C	; 76
+     98a:	6c 2f       	mov	r22, r28
+     98c:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     990:	80 e1       	ldi	r24, 0x10	; 16
+     992:	60 e0       	ldi	r22, 0x00	; 0
+     994:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     998:	12 be       	out	0x32, r1	; 50
+     99a:	05 c0       	rjmp	.+10     	; 0x9a6 <__stack+0x147>
+			}
+		}
+			
+		
+		five++;
+     99c:	b3 94       	inc	r11
+		
+		if (five==4)
+     99e:	94 e0       	ldi	r25, 0x04	; 4
+     9a0:	b9 16       	cp	r11, r25
+     9a2:	09 f0       	breq	.+2      	; 0x9a6 <__stack+0x147>
+     9a4:	2b c4       	rjmp	.+2134   	; 0x11fc <__stack+0x99d>
+		three=0;
+		four=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+     9a6:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		four=0;
+		six=0;
+		seven=0;
+		eight=0;
+     9a8:	dd 24       	eor	r13, r13
+	{
+		two=0;
+		three=0;
+		four=0;
+		six=0;
+		seven=0;
+     9aa:	ee 24       	eor	r14, r14
+	else if ((c==1) & (j==1))
+	{
+		two=0;
+		three=0;
+		four=0;
+		six=0;
+     9ac:	cc 24       	eor	r12, r12
+		
+		five++;
+		
+		if (five==4)
+		{
+			five=0;
+     9ae:	bb 24       	eor	r11, r11
+
+	else if ((c==1) & (j==1))
+	{
+		two=0;
+		three=0;
+		four=0;
+     9b0:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==1))
+	{
+		two=0;
+		three=0;
+     9b2:	99 24       	eor	r9, r9
+	                                 five key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==1))
+	{
+		two=0;
+     9b4:	88 24       	eor	r8, r8
+     9b6:	53 c4       	rjmp	.+2214   	; 0x125e <__stack+0x9ff>
+	
+	/*---------------------------------------------------------------------------------------------------------
+	                                 six key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==1))
+     9b8:	33 23       	and	r19, r19
+     9ba:	09 f4       	brne	.+2      	; 0x9be <__stack+0x15f>
+     9bc:	c0 c0       	rjmp	.+384    	; 0xb3e <__stack+0x2df>
+     9be:	22 23       	and	r18, r18
+     9c0:	09 f4       	brne	.+2      	; 0x9c4 <__stack+0x165>
+     9c2:	bd c0       	rjmp	.+378    	; 0xb3e <__stack+0x2df>
+		nine=0;
+		ten=0;
+		eleven=0;
+		twelve=0;
+		
+		if(six==0)
+     9c4:	cc 20       	and	r12, r12
+     9c6:	49 f5       	brne	.+82     	; 0xa1a <__stack+0x1bb>
+		{
+		   if (TCNT0 >= 80)
+     9c8:	82 b7       	in	r24, 0x32	; 50
+     9ca:	80 35       	cpi	r24, 0x50	; 80
+     9cc:	e0 f0       	brcs	.+56     	; 0xa06 <__stack+0x1a7>
+		   {
+			   
+			   PORTD =0xFF;
+     9ce:	72 ba       	out	0x12, r7	; 18
+     9d0:	8f ef       	ldi	r24, 0xFF	; 255
+     9d2:	91 ee       	ldi	r25, 0xE1	; 225
+     9d4:	a4 e0       	ldi	r26, 0x04	; 4
+     9d6:	81 50       	subi	r24, 0x01	; 1
+     9d8:	90 40       	sbci	r25, 0x00	; 0
+     9da:	a0 40       	sbci	r26, 0x00	; 0
+     9dc:	e1 f7       	brne	.-8      	; 0x9d6 <__stack+0x177>
+     9de:	00 c0       	rjmp	.+0      	; 0x9e0 <__stack+0x181>
+     9e0:	00 00       	nop
+			   _delay_ms(200);
+			   PORTD =0;
+     9e2:	12 ba       	out	0x12, r1	; 18
+     9e4:	8f ef       	ldi	r24, 0xFF	; 255
+     9e6:	91 ee       	ldi	r25, 0xE1	; 225
+     9e8:	a4 e0       	ldi	r26, 0x04	; 4
+     9ea:	81 50       	subi	r24, 0x01	; 1
+     9ec:	90 40       	sbci	r25, 0x00	; 0
+     9ee:	a0 40       	sbci	r26, 0x00	; 0
+     9f0:	e1 f7       	brne	.-8      	; 0x9ea <__stack+0x18b>
+     9f2:	00 c0       	rjmp	.+0      	; 0x9f4 <__stack+0x195>
+     9f4:	00 00       	nop
+			   _delay_ms(200);
+			   contol_x_y();
+     9f6:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+			   Send_C('6',1);
+     9fa:	86 e3       	ldi	r24, 0x36	; 54
+     9fc:	6c 2f       	mov	r22, r28
+     9fe:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   TCNT0 =0;
+     a02:	12 be       	out	0x32, r1	; 50
+     a04:	55 c4       	rjmp	.+2218   	; 0x12b0 <__stack+0xa51>
+		   
+		   
+		   else
+		   {
+			   
+			   Send_C('6',1);
+     a06:	86 e3       	ldi	r24, 0x36	; 54
+     a08:	6c 2f       	mov	r22, r28
+     a0a:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   Send_C(0x10,0);
+     a0e:	80 e1       	ldi	r24, 0x10	; 16
+     a10:	60 e0       	ldi	r22, 0x00	; 0
+     a12:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   //Send_C(0x07,0);
+			   TCNT0 =0;
+     a16:	12 be       	out	0x32, r1	; 50
+     a18:	9d c4       	rjmp	.+2362   	; 0x1354 <__stack+0xaf5>
+		   }	
+		}	
+		
+		else if(six==1)
+     a1a:	91 e0       	ldi	r25, 0x01	; 1
+     a1c:	c9 16       	cp	r12, r25
+     a1e:	49 f5       	brne	.+82     	; 0xa72 <__stack+0x213>
+		{
+		  if (TCNT0 >= 80)
+     a20:	82 b7       	in	r24, 0x32	; 50
+     a22:	80 35       	cpi	r24, 0x50	; 80
+     a24:	e0 f0       	brcs	.+56     	; 0xa5e <__stack+0x1ff>
+		  {
+			  
+			  PORTD =0xFF;
+     a26:	72 ba       	out	0x12, r7	; 18
+     a28:	8f ef       	ldi	r24, 0xFF	; 255
+     a2a:	91 ee       	ldi	r25, 0xE1	; 225
+     a2c:	a4 e0       	ldi	r26, 0x04	; 4
+     a2e:	81 50       	subi	r24, 0x01	; 1
+     a30:	90 40       	sbci	r25, 0x00	; 0
+     a32:	a0 40       	sbci	r26, 0x00	; 0
+     a34:	e1 f7       	brne	.-8      	; 0xa2e <__stack+0x1cf>
+     a36:	00 c0       	rjmp	.+0      	; 0xa38 <__stack+0x1d9>
+     a38:	00 00       	nop
+			  _delay_ms(200);
+			  PORTD =0;
+     a3a:	12 ba       	out	0x12, r1	; 18
+     a3c:	8f ef       	ldi	r24, 0xFF	; 255
+     a3e:	91 ee       	ldi	r25, 0xE1	; 225
+     a40:	a4 e0       	ldi	r26, 0x04	; 4
+     a42:	81 50       	subi	r24, 0x01	; 1
+     a44:	90 40       	sbci	r25, 0x00	; 0
+     a46:	a0 40       	sbci	r26, 0x00	; 0
+     a48:	e1 f7       	brne	.-8      	; 0xa42 <__stack+0x1e3>
+     a4a:	00 c0       	rjmp	.+0      	; 0xa4c <__stack+0x1ed>
+     a4c:	00 00       	nop
+			  _delay_ms(200);
+			  contol_x_y();
+     a4e:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+			  Send_C('M',1);
+     a52:	8d e4       	ldi	r24, 0x4D	; 77
+     a54:	6c 2f       	mov	r22, r28
+     a56:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  TCNT0 =0;
+     a5a:	12 be       	out	0x32, r1	; 50
+     a5c:	29 c4       	rjmp	.+2130   	; 0x12b0 <__stack+0xa51>
+		  
+		  
+		  else
+		  {
+			  
+			  Send_C('M',1);
+     a5e:	8d e4       	ldi	r24, 0x4D	; 77
+     a60:	6c 2f       	mov	r22, r28
+     a62:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  Send_C(0x10,0);
+     a66:	80 e1       	ldi	r24, 0x10	; 16
+     a68:	60 e0       	ldi	r22, 0x00	; 0
+     a6a:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  //Send_C(0x07,0);
+			  TCNT0 =0;
+     a6e:	12 be       	out	0x32, r1	; 50
+     a70:	71 c4       	rjmp	.+2274   	; 0x1354 <__stack+0xaf5>
+		  }
+				
+		}
+		
+		else if (six==2)
+     a72:	92 e0       	ldi	r25, 0x02	; 2
+     a74:	c9 16       	cp	r12, r25
+     a76:	49 f5       	brne	.+82     	; 0xaca <__stack+0x26b>
+		{
+			if (TCNT0 >= 80)
+     a78:	82 b7       	in	r24, 0x32	; 50
+     a7a:	80 35       	cpi	r24, 0x50	; 80
+     a7c:	e0 f0       	brcs	.+56     	; 0xab6 <__stack+0x257>
+			{
+				
+				PORTD =0xFF;
+     a7e:	72 ba       	out	0x12, r7	; 18
+     a80:	8f ef       	ldi	r24, 0xFF	; 255
+     a82:	91 ee       	ldi	r25, 0xE1	; 225
+     a84:	a4 e0       	ldi	r26, 0x04	; 4
+     a86:	81 50       	subi	r24, 0x01	; 1
+     a88:	90 40       	sbci	r25, 0x00	; 0
+     a8a:	a0 40       	sbci	r26, 0x00	; 0
+     a8c:	e1 f7       	brne	.-8      	; 0xa86 <__stack+0x227>
+     a8e:	00 c0       	rjmp	.+0      	; 0xa90 <__stack+0x231>
+     a90:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     a92:	12 ba       	out	0x12, r1	; 18
+     a94:	8f ef       	ldi	r24, 0xFF	; 255
+     a96:	91 ee       	ldi	r25, 0xE1	; 225
+     a98:	a4 e0       	ldi	r26, 0x04	; 4
+     a9a:	81 50       	subi	r24, 0x01	; 1
+     a9c:	90 40       	sbci	r25, 0x00	; 0
+     a9e:	a0 40       	sbci	r26, 0x00	; 0
+     aa0:	e1 f7       	brne	.-8      	; 0xa9a <__stack+0x23b>
+     aa2:	00 c0       	rjmp	.+0      	; 0xaa4 <__stack+0x245>
+     aa4:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     aa6:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('N',1);
+     aaa:	8e e4       	ldi	r24, 0x4E	; 78
+     aac:	6c 2f       	mov	r22, r28
+     aae:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     ab2:	12 be       	out	0x32, r1	; 50
+     ab4:	fd c3       	rjmp	.+2042   	; 0x12b0 <__stack+0xa51>
+			
+			
+			else
+			{
+				
+				Send_C('N',1);
+     ab6:	8e e4       	ldi	r24, 0x4E	; 78
+     ab8:	6c 2f       	mov	r22, r28
+     aba:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     abe:	80 e1       	ldi	r24, 0x10	; 16
+     ac0:	60 e0       	ldi	r22, 0x00	; 0
+     ac2:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     ac6:	12 be       	out	0x32, r1	; 50
+     ac8:	45 c4       	rjmp	.+2186   	; 0x1354 <__stack+0xaf5>
+			}
+			
+		}
+		
+		else if (six==3)
+     aca:	93 e0       	ldi	r25, 0x03	; 3
+     acc:	c9 16       	cp	r12, r25
+     ace:	49 f5       	brne	.+82     	; 0xb22 <__stack+0x2c3>
+		{
+			if (TCNT0 >= 80)
+     ad0:	82 b7       	in	r24, 0x32	; 50
+     ad2:	80 35       	cpi	r24, 0x50	; 80
+     ad4:	e0 f0       	brcs	.+56     	; 0xb0e <__stack+0x2af>
+			{
+				
+				PORTD =0xFF;
+     ad6:	72 ba       	out	0x12, r7	; 18
+     ad8:	8f ef       	ldi	r24, 0xFF	; 255
+     ada:	91 ee       	ldi	r25, 0xE1	; 225
+     adc:	a4 e0       	ldi	r26, 0x04	; 4
+     ade:	81 50       	subi	r24, 0x01	; 1
+     ae0:	90 40       	sbci	r25, 0x00	; 0
+     ae2:	a0 40       	sbci	r26, 0x00	; 0
+     ae4:	e1 f7       	brne	.-8      	; 0xade <__stack+0x27f>
+     ae6:	00 c0       	rjmp	.+0      	; 0xae8 <__stack+0x289>
+     ae8:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     aea:	12 ba       	out	0x12, r1	; 18
+     aec:	8f ef       	ldi	r24, 0xFF	; 255
+     aee:	91 ee       	ldi	r25, 0xE1	; 225
+     af0:	a4 e0       	ldi	r26, 0x04	; 4
+     af2:	81 50       	subi	r24, 0x01	; 1
+     af4:	90 40       	sbci	r25, 0x00	; 0
+     af6:	a0 40       	sbci	r26, 0x00	; 0
+     af8:	e1 f7       	brne	.-8      	; 0xaf2 <__stack+0x293>
+     afa:	00 c0       	rjmp	.+0      	; 0xafc <__stack+0x29d>
+     afc:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     afe:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('O',1);
+     b02:	8f e4       	ldi	r24, 0x4F	; 79
+     b04:	6c 2f       	mov	r22, r28
+     b06:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     b0a:	12 be       	out	0x32, r1	; 50
+     b0c:	0f c0       	rjmp	.+30     	; 0xb2c <__stack+0x2cd>
+			
+			
+			else
+			{
+				
+				Send_C('O',1);
+     b0e:	8f e4       	ldi	r24, 0x4F	; 79
+     b10:	6c 2f       	mov	r22, r28
+     b12:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     b16:	80 e1       	ldi	r24, 0x10	; 16
+     b18:	60 e0       	ldi	r22, 0x00	; 0
+     b1a:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     b1e:	12 be       	out	0x32, r1	; 50
+     b20:	05 c0       	rjmp	.+10     	; 0xb2c <__stack+0x2cd>
+			}
+		}
+			
+		
+		six++;
+     b22:	c3 94       	inc	r12
+		
+		if (six==4)
+     b24:	94 e0       	ldi	r25, 0x04	; 4
+     b26:	c9 16       	cp	r12, r25
+     b28:	09 f0       	breq	.+2      	; 0xb2c <__stack+0x2cd>
+     b2a:	70 c3       	rjmp	.+1760   	; 0x120c <__stack+0x9ad>
+		three=0;
+		four=0;
+		five=0;
+		seven=0;
+		eight=0;
+		nine=0;
+     b2c:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		seven=0;
+		eight=0;
+     b2e:	dd 24       	eor	r13, r13
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		seven=0;
+     b30:	ee 24       	eor	r14, r14
+		
+		six++;
+		
+		if (six==4)
+		{
+			six=0;
+     b32:	cc 24       	eor	r12, r12
+	else if ((c==2) & (j==1))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+     b34:	bb 24       	eor	r11, r11
+
+	else if ((c==2) & (j==1))
+	{
+		two=0;
+		three=0;
+		four=0;
+     b36:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==1))
+	{
+		two=0;
+		three=0;
+     b38:	99 24       	eor	r9, r9
+	                                 six key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==1))
+	{
+		two=0;
+     b3a:	88 24       	eor	r8, r8
+     b3c:	90 c3       	rjmp	.+1824   	; 0x125e <__stack+0x9ff>
+	
+	/*---------------------------------------------------------------------------------------------------------
+	                                 seven key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==0) & (j==2))
+     b3e:	2c 2f       	mov	r18, r28
+     b40:	92 30       	cpi	r25, 0x02	; 2
+     b42:	09 f0       	breq	.+2      	; 0xb46 <__stack+0x2e7>
+     b44:	20 e0       	ldi	r18, 0x00	; 0
+     b46:	88 23       	and	r24, r24
+     b48:	09 f4       	brne	.+2      	; 0xb4c <__stack+0x2ed>
+     b4a:	ec c0       	rjmp	.+472    	; 0xd24 <__stack+0x4c5>
+     b4c:	22 23       	and	r18, r18
+     b4e:	09 f4       	brne	.+2      	; 0xb52 <__stack+0x2f3>
+     b50:	e9 c0       	rjmp	.+466    	; 0xd24 <__stack+0x4c5>
+		nine=0;
+		ten=0;
+		eleven=0;
+		twelve=0;
+		
+		if(seven==0)
+     b52:	ee 20       	and	r14, r14
+     b54:	49 f5       	brne	.+82     	; 0xba8 <__stack+0x349>
+		{
+		   if (TCNT0 >= 80)
+     b56:	82 b7       	in	r24, 0x32	; 50
+     b58:	80 35       	cpi	r24, 0x50	; 80
+     b5a:	e0 f0       	brcs	.+56     	; 0xb94 <__stack+0x335>
+		   {
+			   
+			   PORTD =0xFF;
+     b5c:	72 ba       	out	0x12, r7	; 18
+     b5e:	8f ef       	ldi	r24, 0xFF	; 255
+     b60:	91 ee       	ldi	r25, 0xE1	; 225
+     b62:	a4 e0       	ldi	r26, 0x04	; 4
+     b64:	81 50       	subi	r24, 0x01	; 1
+     b66:	90 40       	sbci	r25, 0x00	; 0
+     b68:	a0 40       	sbci	r26, 0x00	; 0
+     b6a:	e1 f7       	brne	.-8      	; 0xb64 <__stack+0x305>
+     b6c:	00 c0       	rjmp	.+0      	; 0xb6e <__stack+0x30f>
+     b6e:	00 00       	nop
+			   _delay_ms(200);
+			   PORTD =0;
+     b70:	12 ba       	out	0x12, r1	; 18
+     b72:	8f ef       	ldi	r24, 0xFF	; 255
+     b74:	91 ee       	ldi	r25, 0xE1	; 225
+     b76:	a4 e0       	ldi	r26, 0x04	; 4
+     b78:	81 50       	subi	r24, 0x01	; 1
+     b7a:	90 40       	sbci	r25, 0x00	; 0
+     b7c:	a0 40       	sbci	r26, 0x00	; 0
+     b7e:	e1 f7       	brne	.-8      	; 0xb78 <__stack+0x319>
+     b80:	00 c0       	rjmp	.+0      	; 0xb82 <__stack+0x323>
+     b82:	00 00       	nop
+			   _delay_ms(200);
+			   contol_x_y();
+     b84:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+			   Send_C('7',1);
+     b88:	87 e3       	ldi	r24, 0x37	; 55
+     b8a:	6c 2f       	mov	r22, r28
+     b8c:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   TCNT0 =0;
+     b90:	12 be       	out	0x32, r1	; 50
+     b92:	97 c3       	rjmp	.+1838   	; 0x12c2 <__stack+0xa63>
+		   
+		   
+		   else
+		   {
+			   
+			   Send_C('7',1);
+     b94:	87 e3       	ldi	r24, 0x37	; 55
+     b96:	6c 2f       	mov	r22, r28
+     b98:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   Send_C(0x10,0);
+     b9c:	80 e1       	ldi	r24, 0x10	; 16
+     b9e:	60 e0       	ldi	r22, 0x00	; 0
+     ba0:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   //Send_C(0x07,0);
+			   TCNT0 =0;
+     ba4:	12 be       	out	0x32, r1	; 50
+     ba6:	df c3       	rjmp	.+1982   	; 0x1366 <__stack+0xb07>
+		   }	
+		}	
+		
+		else if(seven==1)
+     ba8:	91 e0       	ldi	r25, 0x01	; 1
+     baa:	e9 16       	cp	r14, r25
+     bac:	49 f5       	brne	.+82     	; 0xc00 <__stack+0x3a1>
+		{
+		  if (TCNT0 >= 80)
+     bae:	82 b7       	in	r24, 0x32	; 50
+     bb0:	80 35       	cpi	r24, 0x50	; 80
+     bb2:	e0 f0       	brcs	.+56     	; 0xbec <__stack+0x38d>
+		  {
+			  
+			  PORTD =0xFF;
+     bb4:	72 ba       	out	0x12, r7	; 18
+     bb6:	8f ef       	ldi	r24, 0xFF	; 255
+     bb8:	91 ee       	ldi	r25, 0xE1	; 225
+     bba:	a4 e0       	ldi	r26, 0x04	; 4
+     bbc:	81 50       	subi	r24, 0x01	; 1
+     bbe:	90 40       	sbci	r25, 0x00	; 0
+     bc0:	a0 40       	sbci	r26, 0x00	; 0
+     bc2:	e1 f7       	brne	.-8      	; 0xbbc <__stack+0x35d>
+     bc4:	00 c0       	rjmp	.+0      	; 0xbc6 <__stack+0x367>
+     bc6:	00 00       	nop
+			  _delay_ms(200);
+			  PORTD =0;
+     bc8:	12 ba       	out	0x12, r1	; 18
+     bca:	8f ef       	ldi	r24, 0xFF	; 255
+     bcc:	91 ee       	ldi	r25, 0xE1	; 225
+     bce:	a4 e0       	ldi	r26, 0x04	; 4
+     bd0:	81 50       	subi	r24, 0x01	; 1
+     bd2:	90 40       	sbci	r25, 0x00	; 0
+     bd4:	a0 40       	sbci	r26, 0x00	; 0
+     bd6:	e1 f7       	brne	.-8      	; 0xbd0 <__stack+0x371>
+     bd8:	00 c0       	rjmp	.+0      	; 0xbda <__stack+0x37b>
+     bda:	00 00       	nop
+			  _delay_ms(200);
+			  contol_x_y();
+     bdc:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+			  Send_C('P',1);
+     be0:	80 e5       	ldi	r24, 0x50	; 80
+     be2:	6c 2f       	mov	r22, r28
+     be4:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  TCNT0 =0;
+     be8:	12 be       	out	0x32, r1	; 50
+     bea:	6b c3       	rjmp	.+1750   	; 0x12c2 <__stack+0xa63>
+		  
+		  
+		  else
+		  {
+			  
+			  Send_C('P',1);
+     bec:	80 e5       	ldi	r24, 0x50	; 80
+     bee:	6c 2f       	mov	r22, r28
+     bf0:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  Send_C(0x10,0);
+     bf4:	80 e1       	ldi	r24, 0x10	; 16
+     bf6:	60 e0       	ldi	r22, 0x00	; 0
+     bf8:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  //Send_C(0x07,0);
+			  TCNT0 =0;
+     bfc:	12 be       	out	0x32, r1	; 50
+     bfe:	b3 c3       	rjmp	.+1894   	; 0x1366 <__stack+0xb07>
+		  }
+				
+		}
+		
+		else if (seven==2)
+     c00:	92 e0       	ldi	r25, 0x02	; 2
+     c02:	e9 16       	cp	r14, r25
+     c04:	49 f5       	brne	.+82     	; 0xc58 <__stack+0x3f9>
+		{
+			if (TCNT0 >= 80)
+     c06:	82 b7       	in	r24, 0x32	; 50
+     c08:	80 35       	cpi	r24, 0x50	; 80
+     c0a:	e0 f0       	brcs	.+56     	; 0xc44 <__stack+0x3e5>
+			{
+				
+				PORTD =0xFF;
+     c0c:	72 ba       	out	0x12, r7	; 18
+     c0e:	8f ef       	ldi	r24, 0xFF	; 255
+     c10:	91 ee       	ldi	r25, 0xE1	; 225
+     c12:	a4 e0       	ldi	r26, 0x04	; 4
+     c14:	81 50       	subi	r24, 0x01	; 1
+     c16:	90 40       	sbci	r25, 0x00	; 0
+     c18:	a0 40       	sbci	r26, 0x00	; 0
+     c1a:	e1 f7       	brne	.-8      	; 0xc14 <__stack+0x3b5>
+     c1c:	00 c0       	rjmp	.+0      	; 0xc1e <__stack+0x3bf>
+     c1e:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     c20:	12 ba       	out	0x12, r1	; 18
+     c22:	8f ef       	ldi	r24, 0xFF	; 255
+     c24:	91 ee       	ldi	r25, 0xE1	; 225
+     c26:	a4 e0       	ldi	r26, 0x04	; 4
+     c28:	81 50       	subi	r24, 0x01	; 1
+     c2a:	90 40       	sbci	r25, 0x00	; 0
+     c2c:	a0 40       	sbci	r26, 0x00	; 0
+     c2e:	e1 f7       	brne	.-8      	; 0xc28 <__stack+0x3c9>
+     c30:	00 c0       	rjmp	.+0      	; 0xc32 <__stack+0x3d3>
+     c32:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     c34:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('Q',1);
+     c38:	81 e5       	ldi	r24, 0x51	; 81
+     c3a:	6c 2f       	mov	r22, r28
+     c3c:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     c40:	12 be       	out	0x32, r1	; 50
+     c42:	3f c3       	rjmp	.+1662   	; 0x12c2 <__stack+0xa63>
+			
+			
+			else
+			{
+				
+				Send_C('Q',1);
+     c44:	81 e5       	ldi	r24, 0x51	; 81
+     c46:	6c 2f       	mov	r22, r28
+     c48:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     c4c:	80 e1       	ldi	r24, 0x10	; 16
+     c4e:	60 e0       	ldi	r22, 0x00	; 0
+     c50:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     c54:	12 be       	out	0x32, r1	; 50
+     c56:	87 c3       	rjmp	.+1806   	; 0x1366 <__stack+0xb07>
+			}
+			
+		}
+		
+		else if (seven==3)
+     c58:	93 e0       	ldi	r25, 0x03	; 3
+     c5a:	e9 16       	cp	r14, r25
+     c5c:	49 f5       	brne	.+82     	; 0xcb0 <__stack+0x451>
+		{
+			if (TCNT0 >= 80)
+     c5e:	82 b7       	in	r24, 0x32	; 50
+     c60:	80 35       	cpi	r24, 0x50	; 80
+     c62:	e0 f0       	brcs	.+56     	; 0xc9c <__stack+0x43d>
+			{
+				
+				PORTD =0xFF;
+     c64:	72 ba       	out	0x12, r7	; 18
+     c66:	8f ef       	ldi	r24, 0xFF	; 255
+     c68:	91 ee       	ldi	r25, 0xE1	; 225
+     c6a:	a4 e0       	ldi	r26, 0x04	; 4
+     c6c:	81 50       	subi	r24, 0x01	; 1
+     c6e:	90 40       	sbci	r25, 0x00	; 0
+     c70:	a0 40       	sbci	r26, 0x00	; 0
+     c72:	e1 f7       	brne	.-8      	; 0xc6c <__stack+0x40d>
+     c74:	00 c0       	rjmp	.+0      	; 0xc76 <__stack+0x417>
+     c76:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     c78:	12 ba       	out	0x12, r1	; 18
+     c7a:	8f ef       	ldi	r24, 0xFF	; 255
+     c7c:	91 ee       	ldi	r25, 0xE1	; 225
+     c7e:	a4 e0       	ldi	r26, 0x04	; 4
+     c80:	81 50       	subi	r24, 0x01	; 1
+     c82:	90 40       	sbci	r25, 0x00	; 0
+     c84:	a0 40       	sbci	r26, 0x00	; 0
+     c86:	e1 f7       	brne	.-8      	; 0xc80 <__stack+0x421>
+     c88:	00 c0       	rjmp	.+0      	; 0xc8a <__stack+0x42b>
+     c8a:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     c8c:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('R',1);
+     c90:	82 e5       	ldi	r24, 0x52	; 82
+     c92:	6c 2f       	mov	r22, r28
+     c94:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     c98:	12 be       	out	0x32, r1	; 50
+     c9a:	13 c3       	rjmp	.+1574   	; 0x12c2 <__stack+0xa63>
+			
+			
+			else
+			{
+				
+				Send_C('R',1);
+     c9c:	82 e5       	ldi	r24, 0x52	; 82
+     c9e:	6c 2f       	mov	r22, r28
+     ca0:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     ca4:	80 e1       	ldi	r24, 0x10	; 16
+     ca6:	60 e0       	ldi	r22, 0x00	; 0
+     ca8:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     cac:	12 be       	out	0x32, r1	; 50
+     cae:	5b c3       	rjmp	.+1718   	; 0x1366 <__stack+0xb07>
+			}
+		}
+		
+		else if (seven==4)
+     cb0:	94 e0       	ldi	r25, 0x04	; 4
+     cb2:	e9 16       	cp	r14, r25
+     cb4:	49 f5       	brne	.+82     	; 0xd08 <__stack+0x4a9>
+		{
+			if (TCNT0 >= 80)
+     cb6:	82 b7       	in	r24, 0x32	; 50
+     cb8:	80 35       	cpi	r24, 0x50	; 80
+     cba:	e0 f0       	brcs	.+56     	; 0xcf4 <__stack+0x495>
+			{
+				
+				PORTD =0xFF;
+     cbc:	72 ba       	out	0x12, r7	; 18
+     cbe:	8f ef       	ldi	r24, 0xFF	; 255
+     cc0:	91 ee       	ldi	r25, 0xE1	; 225
+     cc2:	a4 e0       	ldi	r26, 0x04	; 4
+     cc4:	81 50       	subi	r24, 0x01	; 1
+     cc6:	90 40       	sbci	r25, 0x00	; 0
+     cc8:	a0 40       	sbci	r26, 0x00	; 0
+     cca:	e1 f7       	brne	.-8      	; 0xcc4 <__stack+0x465>
+     ccc:	00 c0       	rjmp	.+0      	; 0xcce <__stack+0x46f>
+     cce:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     cd0:	12 ba       	out	0x12, r1	; 18
+     cd2:	8f ef       	ldi	r24, 0xFF	; 255
+     cd4:	91 ee       	ldi	r25, 0xE1	; 225
+     cd6:	a4 e0       	ldi	r26, 0x04	; 4
+     cd8:	81 50       	subi	r24, 0x01	; 1
+     cda:	90 40       	sbci	r25, 0x00	; 0
+     cdc:	a0 40       	sbci	r26, 0x00	; 0
+     cde:	e1 f7       	brne	.-8      	; 0xcd8 <__stack+0x479>
+     ce0:	00 c0       	rjmp	.+0      	; 0xce2 <__stack+0x483>
+     ce2:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     ce4:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('S',1);
+     ce8:	83 e5       	ldi	r24, 0x53	; 83
+     cea:	6c 2f       	mov	r22, r28
+     cec:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     cf0:	12 be       	out	0x32, r1	; 50
+     cf2:	0f c0       	rjmp	.+30     	; 0xd12 <__stack+0x4b3>
+			
+			
+			else
+			{
+				
+				Send_C('S',1);
+     cf4:	83 e5       	ldi	r24, 0x53	; 83
+     cf6:	6c 2f       	mov	r22, r28
+     cf8:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     cfc:	80 e1       	ldi	r24, 0x10	; 16
+     cfe:	60 e0       	ldi	r22, 0x00	; 0
+     d00:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     d04:	12 be       	out	0x32, r1	; 50
+     d06:	05 c0       	rjmp	.+10     	; 0xd12 <__stack+0x4b3>
+			}
+		}
+			
+		
+		seven++;
+     d08:	e3 94       	inc	r14
+		
+		if (seven==5)
+     d0a:	95 e0       	ldi	r25, 0x05	; 5
+     d0c:	e9 16       	cp	r14, r25
+     d0e:	09 f0       	breq	.+2      	; 0xd12 <__stack+0x4b3>
+     d10:	85 c2       	rjmp	.+1290   	; 0x121c <__stack+0x9bd>
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		eight=0;
+		nine=0;
+     d12:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		eight=0;
+     d14:	dd 24       	eor	r13, r13
+		
+		seven++;
+		
+		if (seven==5)
+		{
+			seven=0;
+     d16:	ee 24       	eor	r14, r14
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+     d18:	cc 24       	eor	r12, r12
+	else if ((c==0) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+     d1a:	bb 24       	eor	r11, r11
+
+	else if ((c==0) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+     d1c:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==0) & (j==2))
+	{
+		two=0;
+		three=0;
+     d1e:	99 24       	eor	r9, r9
+	                                 seven key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==0) & (j==2))
+	{
+		two=0;
+     d20:	88 24       	eor	r8, r8
+     d22:	9d c2       	rjmp	.+1338   	; 0x125e <__stack+0x9ff>
+	
+	/*---------------------------------------------------------------------------------------------------------
+	                                 eight key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==2))
+     d24:	44 23       	and	r20, r20
+     d26:	09 f4       	brne	.+2      	; 0xd2a <__stack+0x4cb>
+     d28:	c0 c0       	rjmp	.+384    	; 0xeaa <__stack+0x64b>
+     d2a:	22 23       	and	r18, r18
+     d2c:	09 f4       	brne	.+2      	; 0xd30 <__stack+0x4d1>
+     d2e:	bd c0       	rjmp	.+378    	; 0xeaa <__stack+0x64b>
+		nine=0;
+		ten=0;
+		eleven=0;
+		twelve=0;
+		
+		if(eight==0)
+     d30:	dd 20       	and	r13, r13
+     d32:	49 f5       	brne	.+82     	; 0xd86 <__stack+0x527>
+		{
+		   if (TCNT0 >= 80)
+     d34:	82 b7       	in	r24, 0x32	; 50
+     d36:	80 35       	cpi	r24, 0x50	; 80
+     d38:	e0 f0       	brcs	.+56     	; 0xd72 <__stack+0x513>
+		   {
+			   
+			   PORTD =0xFF;
+     d3a:	72 ba       	out	0x12, r7	; 18
+     d3c:	8f ef       	ldi	r24, 0xFF	; 255
+     d3e:	91 ee       	ldi	r25, 0xE1	; 225
+     d40:	a4 e0       	ldi	r26, 0x04	; 4
+     d42:	81 50       	subi	r24, 0x01	; 1
+     d44:	90 40       	sbci	r25, 0x00	; 0
+     d46:	a0 40       	sbci	r26, 0x00	; 0
+     d48:	e1 f7       	brne	.-8      	; 0xd42 <__stack+0x4e3>
+     d4a:	00 c0       	rjmp	.+0      	; 0xd4c <__stack+0x4ed>
+     d4c:	00 00       	nop
+			   _delay_ms(200);
+			   PORTD =0;
+     d4e:	12 ba       	out	0x12, r1	; 18
+     d50:	8f ef       	ldi	r24, 0xFF	; 255
+     d52:	91 ee       	ldi	r25, 0xE1	; 225
+     d54:	a4 e0       	ldi	r26, 0x04	; 4
+     d56:	81 50       	subi	r24, 0x01	; 1
+     d58:	90 40       	sbci	r25, 0x00	; 0
+     d5a:	a0 40       	sbci	r26, 0x00	; 0
+     d5c:	e1 f7       	brne	.-8      	; 0xd56 <__stack+0x4f7>
+     d5e:	00 c0       	rjmp	.+0      	; 0xd60 <__stack+0x501>
+     d60:	00 00       	nop
+			   _delay_ms(200);
+			   contol_x_y();
+     d62:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+			   Send_C('8',1);
+     d66:	88 e3       	ldi	r24, 0x38	; 56
+     d68:	6c 2f       	mov	r22, r28
+     d6a:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   TCNT0 =0;
+     d6e:	12 be       	out	0x32, r1	; 50
+     d70:	b1 c2       	rjmp	.+1378   	; 0x12d4 <__stack+0xa75>
+		   
+		   
+		   else
+		   {
+			   
+			   Send_C('8',1);
+     d72:	88 e3       	ldi	r24, 0x38	; 56
+     d74:	6c 2f       	mov	r22, r28
+     d76:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   Send_C(0x10,0);
+     d7a:	80 e1       	ldi	r24, 0x10	; 16
+     d7c:	60 e0       	ldi	r22, 0x00	; 0
+     d7e:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   //Send_C(0x07,0);
+			   TCNT0 =0;
+     d82:	12 be       	out	0x32, r1	; 50
+     d84:	f9 c2       	rjmp	.+1522   	; 0x1378 <__stack+0xb19>
+		   }	
+		}	
+		
+		else if(eight==1)
+     d86:	91 e0       	ldi	r25, 0x01	; 1
+     d88:	d9 16       	cp	r13, r25
+     d8a:	49 f5       	brne	.+82     	; 0xdde <__stack+0x57f>
+		{
+		  if (TCNT0 >= 80)
+     d8c:	82 b7       	in	r24, 0x32	; 50
+     d8e:	80 35       	cpi	r24, 0x50	; 80
+     d90:	e0 f0       	brcs	.+56     	; 0xdca <__stack+0x56b>
+		  {
+			  
+			  PORTD =0xFF;
+     d92:	72 ba       	out	0x12, r7	; 18
+     d94:	8f ef       	ldi	r24, 0xFF	; 255
+     d96:	91 ee       	ldi	r25, 0xE1	; 225
+     d98:	a4 e0       	ldi	r26, 0x04	; 4
+     d9a:	81 50       	subi	r24, 0x01	; 1
+     d9c:	90 40       	sbci	r25, 0x00	; 0
+     d9e:	a0 40       	sbci	r26, 0x00	; 0
+     da0:	e1 f7       	brne	.-8      	; 0xd9a <__stack+0x53b>
+     da2:	00 c0       	rjmp	.+0      	; 0xda4 <__stack+0x545>
+     da4:	00 00       	nop
+			  _delay_ms(200);
+			  PORTD =0;
+     da6:	12 ba       	out	0x12, r1	; 18
+     da8:	8f ef       	ldi	r24, 0xFF	; 255
+     daa:	91 ee       	ldi	r25, 0xE1	; 225
+     dac:	a4 e0       	ldi	r26, 0x04	; 4
+     dae:	81 50       	subi	r24, 0x01	; 1
+     db0:	90 40       	sbci	r25, 0x00	; 0
+     db2:	a0 40       	sbci	r26, 0x00	; 0
+     db4:	e1 f7       	brne	.-8      	; 0xdae <__stack+0x54f>
+     db6:	00 c0       	rjmp	.+0      	; 0xdb8 <__stack+0x559>
+     db8:	00 00       	nop
+			  _delay_ms(200);
+			  contol_x_y();
+     dba:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+			  Send_C('T',1);
+     dbe:	84 e5       	ldi	r24, 0x54	; 84
+     dc0:	6c 2f       	mov	r22, r28
+     dc2:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  TCNT0 =0;
+     dc6:	12 be       	out	0x32, r1	; 50
+     dc8:	85 c2       	rjmp	.+1290   	; 0x12d4 <__stack+0xa75>
+		  
+		  
+		  else
+		  {
+			  
+			  Send_C('T',1);
+     dca:	84 e5       	ldi	r24, 0x54	; 84
+     dcc:	6c 2f       	mov	r22, r28
+     dce:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  Send_C(0x10,0);
+     dd2:	80 e1       	ldi	r24, 0x10	; 16
+     dd4:	60 e0       	ldi	r22, 0x00	; 0
+     dd6:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  //Send_C(0x07,0);
+			  TCNT0 =0;
+     dda:	12 be       	out	0x32, r1	; 50
+     ddc:	cd c2       	rjmp	.+1434   	; 0x1378 <__stack+0xb19>
+		  }
+				
+		}
+		
+		else if (eight==2)
+     dde:	92 e0       	ldi	r25, 0x02	; 2
+     de0:	d9 16       	cp	r13, r25
+     de2:	49 f5       	brne	.+82     	; 0xe36 <__stack+0x5d7>
+		{
+			if (TCNT0 >= 80)
+     de4:	82 b7       	in	r24, 0x32	; 50
+     de6:	80 35       	cpi	r24, 0x50	; 80
+     de8:	e0 f0       	brcs	.+56     	; 0xe22 <__stack+0x5c3>
+			{
+				
+				PORTD =0xFF;
+     dea:	72 ba       	out	0x12, r7	; 18
+     dec:	8f ef       	ldi	r24, 0xFF	; 255
+     dee:	91 ee       	ldi	r25, 0xE1	; 225
+     df0:	a4 e0       	ldi	r26, 0x04	; 4
+     df2:	81 50       	subi	r24, 0x01	; 1
+     df4:	90 40       	sbci	r25, 0x00	; 0
+     df6:	a0 40       	sbci	r26, 0x00	; 0
+     df8:	e1 f7       	brne	.-8      	; 0xdf2 <__stack+0x593>
+     dfa:	00 c0       	rjmp	.+0      	; 0xdfc <__stack+0x59d>
+     dfc:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     dfe:	12 ba       	out	0x12, r1	; 18
+     e00:	8f ef       	ldi	r24, 0xFF	; 255
+     e02:	91 ee       	ldi	r25, 0xE1	; 225
+     e04:	a4 e0       	ldi	r26, 0x04	; 4
+     e06:	81 50       	subi	r24, 0x01	; 1
+     e08:	90 40       	sbci	r25, 0x00	; 0
+     e0a:	a0 40       	sbci	r26, 0x00	; 0
+     e0c:	e1 f7       	brne	.-8      	; 0xe06 <__stack+0x5a7>
+     e0e:	00 c0       	rjmp	.+0      	; 0xe10 <__stack+0x5b1>
+     e10:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     e12:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('U',1);
+     e16:	85 e5       	ldi	r24, 0x55	; 85
+     e18:	6c 2f       	mov	r22, r28
+     e1a:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     e1e:	12 be       	out	0x32, r1	; 50
+     e20:	59 c2       	rjmp	.+1202   	; 0x12d4 <__stack+0xa75>
+			
+			
+			else
+			{
+				
+				Send_C('U',1);
+     e22:	85 e5       	ldi	r24, 0x55	; 85
+     e24:	6c 2f       	mov	r22, r28
+     e26:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     e2a:	80 e1       	ldi	r24, 0x10	; 16
+     e2c:	60 e0       	ldi	r22, 0x00	; 0
+     e2e:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     e32:	12 be       	out	0x32, r1	; 50
+     e34:	a1 c2       	rjmp	.+1346   	; 0x1378 <__stack+0xb19>
+			}
+			
+		}
+		
+		else if (eight==3)
+     e36:	93 e0       	ldi	r25, 0x03	; 3
+     e38:	d9 16       	cp	r13, r25
+     e3a:	49 f5       	brne	.+82     	; 0xe8e <__stack+0x62f>
+		{
+			if (TCNT0 >= 80)
+     e3c:	82 b7       	in	r24, 0x32	; 50
+     e3e:	80 35       	cpi	r24, 0x50	; 80
+     e40:	e0 f0       	brcs	.+56     	; 0xe7a <__stack+0x61b>
+			{
+				
+				PORTD =0xFF;
+     e42:	72 ba       	out	0x12, r7	; 18
+     e44:	8f ef       	ldi	r24, 0xFF	; 255
+     e46:	91 ee       	ldi	r25, 0xE1	; 225
+     e48:	a4 e0       	ldi	r26, 0x04	; 4
+     e4a:	81 50       	subi	r24, 0x01	; 1
+     e4c:	90 40       	sbci	r25, 0x00	; 0
+     e4e:	a0 40       	sbci	r26, 0x00	; 0
+     e50:	e1 f7       	brne	.-8      	; 0xe4a <__stack+0x5eb>
+     e52:	00 c0       	rjmp	.+0      	; 0xe54 <__stack+0x5f5>
+     e54:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     e56:	12 ba       	out	0x12, r1	; 18
+     e58:	8f ef       	ldi	r24, 0xFF	; 255
+     e5a:	91 ee       	ldi	r25, 0xE1	; 225
+     e5c:	a4 e0       	ldi	r26, 0x04	; 4
+     e5e:	81 50       	subi	r24, 0x01	; 1
+     e60:	90 40       	sbci	r25, 0x00	; 0
+     e62:	a0 40       	sbci	r26, 0x00	; 0
+     e64:	e1 f7       	brne	.-8      	; 0xe5e <__stack+0x5ff>
+     e66:	00 c0       	rjmp	.+0      	; 0xe68 <__stack+0x609>
+     e68:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     e6a:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('V',1);
+     e6e:	86 e5       	ldi	r24, 0x56	; 86
+     e70:	6c 2f       	mov	r22, r28
+     e72:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     e76:	12 be       	out	0x32, r1	; 50
+     e78:	0f c0       	rjmp	.+30     	; 0xe98 <__stack+0x639>
+			
+			
+			else
+			{
+				
+				Send_C('V',1);
+     e7a:	86 e5       	ldi	r24, 0x56	; 86
+     e7c:	6c 2f       	mov	r22, r28
+     e7e:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     e82:	80 e1       	ldi	r24, 0x10	; 16
+     e84:	60 e0       	ldi	r22, 0x00	; 0
+     e86:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     e8a:	12 be       	out	0x32, r1	; 50
+     e8c:	05 c0       	rjmp	.+10     	; 0xe98 <__stack+0x639>
+			}
+		}
+			
+		
+		eight++;
+     e8e:	d3 94       	inc	r13
+		
+		if (eight==4)
+     e90:	94 e0       	ldi	r25, 0x04	; 4
+     e92:	d9 16       	cp	r13, r25
+     e94:	09 f0       	breq	.+2      	; 0xe98 <__stack+0x639>
+     e96:	ca c1       	rjmp	.+916    	; 0x122c <__stack+0x9cd>
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		nine=0;
+     e98:	ff 24       	eor	r15, r15
+		
+		eight++;
+		
+		if (eight==4)
+		{
+			eight=0;
+     e9a:	dd 24       	eor	r13, r13
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+     e9c:	ee 24       	eor	r14, r14
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+     e9e:	cc 24       	eor	r12, r12
+	else if ((c==1) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+     ea0:	bb 24       	eor	r11, r11
+
+	else if ((c==1) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+     ea2:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==2))
+	{
+		two=0;
+		three=0;
+     ea4:	99 24       	eor	r9, r9
+	                                 eight key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==2))
+	{
+		two=0;
+     ea6:	88 24       	eor	r8, r8
+     ea8:	da c1       	rjmp	.+948    	; 0x125e <__stack+0x9ff>
+	
+	/*---------------------------------------------------------------------------------------------------------
+	                                 nine key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==2))
+     eaa:	33 23       	and	r19, r19
+     eac:	09 f4       	brne	.+2      	; 0xeb0 <__stack+0x651>
+     eae:	ec c0       	rjmp	.+472    	; 0x1088 <__stack+0x829>
+     eb0:	22 23       	and	r18, r18
+     eb2:	09 f4       	brne	.+2      	; 0xeb6 <__stack+0x657>
+     eb4:	e9 c0       	rjmp	.+466    	; 0x1088 <__stack+0x829>
+		seven=0;
+		eight=0;
+		ten=0;
+		eleven=0;
+		twelve=0;
+		if(nine==0)
+     eb6:	ff 20       	and	r15, r15
+     eb8:	49 f5       	brne	.+82     	; 0xf0c <__stack+0x6ad>
+		{
+		   if (TCNT0 >= 80)
+     eba:	82 b7       	in	r24, 0x32	; 50
+     ebc:	80 35       	cpi	r24, 0x50	; 80
+     ebe:	e0 f0       	brcs	.+56     	; 0xef8 <__stack+0x699>
+		   {
+			   
+			   PORTD =0xFF;
+     ec0:	72 ba       	out	0x12, r7	; 18
+     ec2:	8f ef       	ldi	r24, 0xFF	; 255
+     ec4:	91 ee       	ldi	r25, 0xE1	; 225
+     ec6:	a4 e0       	ldi	r26, 0x04	; 4
+     ec8:	81 50       	subi	r24, 0x01	; 1
+     eca:	90 40       	sbci	r25, 0x00	; 0
+     ecc:	a0 40       	sbci	r26, 0x00	; 0
+     ece:	e1 f7       	brne	.-8      	; 0xec8 <__stack+0x669>
+     ed0:	00 c0       	rjmp	.+0      	; 0xed2 <__stack+0x673>
+     ed2:	00 00       	nop
+			   _delay_ms(200);
+			   PORTD =0;
+     ed4:	12 ba       	out	0x12, r1	; 18
+     ed6:	8f ef       	ldi	r24, 0xFF	; 255
+     ed8:	91 ee       	ldi	r25, 0xE1	; 225
+     eda:	a4 e0       	ldi	r26, 0x04	; 4
+     edc:	81 50       	subi	r24, 0x01	; 1
+     ede:	90 40       	sbci	r25, 0x00	; 0
+     ee0:	a0 40       	sbci	r26, 0x00	; 0
+     ee2:	e1 f7       	brne	.-8      	; 0xedc <__stack+0x67d>
+     ee4:	00 c0       	rjmp	.+0      	; 0xee6 <__stack+0x687>
+     ee6:	00 00       	nop
+			   _delay_ms(200);
+			   contol_x_y();
+     ee8:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+			   Send_C('9',1);
+     eec:	89 e3       	ldi	r24, 0x39	; 57
+     eee:	6c 2f       	mov	r22, r28
+     ef0:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   TCNT0 =0;
+     ef4:	12 be       	out	0x32, r1	; 50
+     ef6:	f7 c1       	rjmp	.+1006   	; 0x12e6 <__stack+0xa87>
+		   
+		   
+		   else
+		   {
+			   
+			   Send_C('9',1);
+     ef8:	89 e3       	ldi	r24, 0x39	; 57
+     efa:	6c 2f       	mov	r22, r28
+     efc:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   Send_C(0x10,0);
+     f00:	80 e1       	ldi	r24, 0x10	; 16
+     f02:	60 e0       	ldi	r22, 0x00	; 0
+     f04:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   //Send_C(0x07,0);
+			   TCNT0 =0;
+     f08:	12 be       	out	0x32, r1	; 50
+     f0a:	3f c2       	rjmp	.+1150   	; 0x138a <__stack+0xb2b>
+		   }	
+		}	
+		
+		else if(nine==1)
+     f0c:	91 e0       	ldi	r25, 0x01	; 1
+     f0e:	f9 16       	cp	r15, r25
+     f10:	49 f5       	brne	.+82     	; 0xf64 <__stack+0x705>
+		{
+		  if (TCNT0 >= 80)
+     f12:	82 b7       	in	r24, 0x32	; 50
+     f14:	80 35       	cpi	r24, 0x50	; 80
+     f16:	e0 f0       	brcs	.+56     	; 0xf50 <__stack+0x6f1>
+		  {
+			  
+			  PORTD =0xFF;
+     f18:	72 ba       	out	0x12, r7	; 18
+     f1a:	8f ef       	ldi	r24, 0xFF	; 255
+     f1c:	91 ee       	ldi	r25, 0xE1	; 225
+     f1e:	a4 e0       	ldi	r26, 0x04	; 4
+     f20:	81 50       	subi	r24, 0x01	; 1
+     f22:	90 40       	sbci	r25, 0x00	; 0
+     f24:	a0 40       	sbci	r26, 0x00	; 0
+     f26:	e1 f7       	brne	.-8      	; 0xf20 <__stack+0x6c1>
+     f28:	00 c0       	rjmp	.+0      	; 0xf2a <__stack+0x6cb>
+     f2a:	00 00       	nop
+			  _delay_ms(200);
+			  PORTD =0;
+     f2c:	12 ba       	out	0x12, r1	; 18
+     f2e:	8f ef       	ldi	r24, 0xFF	; 255
+     f30:	91 ee       	ldi	r25, 0xE1	; 225
+     f32:	a4 e0       	ldi	r26, 0x04	; 4
+     f34:	81 50       	subi	r24, 0x01	; 1
+     f36:	90 40       	sbci	r25, 0x00	; 0
+     f38:	a0 40       	sbci	r26, 0x00	; 0
+     f3a:	e1 f7       	brne	.-8      	; 0xf34 <__stack+0x6d5>
+     f3c:	00 c0       	rjmp	.+0      	; 0xf3e <__stack+0x6df>
+     f3e:	00 00       	nop
+			  _delay_ms(200);
+			  contol_x_y();
+     f40:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+			  Send_C('W',1);
+     f44:	87 e5       	ldi	r24, 0x57	; 87
+     f46:	6c 2f       	mov	r22, r28
+     f48:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  TCNT0 =0;
+     f4c:	12 be       	out	0x32, r1	; 50
+     f4e:	cb c1       	rjmp	.+918    	; 0x12e6 <__stack+0xa87>
+		  
+		  
+		  else
+		  {
+			  
+			  Send_C('W',1);
+     f50:	87 e5       	ldi	r24, 0x57	; 87
+     f52:	6c 2f       	mov	r22, r28
+     f54:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  Send_C(0x10,0);
+     f58:	80 e1       	ldi	r24, 0x10	; 16
+     f5a:	60 e0       	ldi	r22, 0x00	; 0
+     f5c:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  //Send_C(0x07,0);
+			  TCNT0 =0;
+     f60:	12 be       	out	0x32, r1	; 50
+     f62:	13 c2       	rjmp	.+1062   	; 0x138a <__stack+0xb2b>
+		  }
+				
+		}
+		
+		else if (nine==2)
+     f64:	92 e0       	ldi	r25, 0x02	; 2
+     f66:	f9 16       	cp	r15, r25
+     f68:	49 f5       	brne	.+82     	; 0xfbc <__stack+0x75d>
+		{
+			if (TCNT0 >= 80)
+     f6a:	82 b7       	in	r24, 0x32	; 50
+     f6c:	80 35       	cpi	r24, 0x50	; 80
+     f6e:	e0 f0       	brcs	.+56     	; 0xfa8 <__stack+0x749>
+			{
+				
+				PORTD =0xFF;
+     f70:	72 ba       	out	0x12, r7	; 18
+     f72:	8f ef       	ldi	r24, 0xFF	; 255
+     f74:	91 ee       	ldi	r25, 0xE1	; 225
+     f76:	a4 e0       	ldi	r26, 0x04	; 4
+     f78:	81 50       	subi	r24, 0x01	; 1
+     f7a:	90 40       	sbci	r25, 0x00	; 0
+     f7c:	a0 40       	sbci	r26, 0x00	; 0
+     f7e:	e1 f7       	brne	.-8      	; 0xf78 <__stack+0x719>
+     f80:	00 c0       	rjmp	.+0      	; 0xf82 <__stack+0x723>
+     f82:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     f84:	12 ba       	out	0x12, r1	; 18
+     f86:	8f ef       	ldi	r24, 0xFF	; 255
+     f88:	91 ee       	ldi	r25, 0xE1	; 225
+     f8a:	a4 e0       	ldi	r26, 0x04	; 4
+     f8c:	81 50       	subi	r24, 0x01	; 1
+     f8e:	90 40       	sbci	r25, 0x00	; 0
+     f90:	a0 40       	sbci	r26, 0x00	; 0
+     f92:	e1 f7       	brne	.-8      	; 0xf8c <__stack+0x72d>
+     f94:	00 c0       	rjmp	.+0      	; 0xf96 <__stack+0x737>
+     f96:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     f98:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('X',1);
+     f9c:	88 e5       	ldi	r24, 0x58	; 88
+     f9e:	6c 2f       	mov	r22, r28
+     fa0:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     fa4:	12 be       	out	0x32, r1	; 50
+     fa6:	9f c1       	rjmp	.+830    	; 0x12e6 <__stack+0xa87>
+			
+			
+			else
+			{
+				
+				Send_C('X',1);
+     fa8:	88 e5       	ldi	r24, 0x58	; 88
+     faa:	6c 2f       	mov	r22, r28
+     fac:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+     fb0:	80 e1       	ldi	r24, 0x10	; 16
+     fb2:	60 e0       	ldi	r22, 0x00	; 0
+     fb4:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+     fb8:	12 be       	out	0x32, r1	; 50
+     fba:	e7 c1       	rjmp	.+974    	; 0x138a <__stack+0xb2b>
+			}
+			
+		}
+		
+		else if (nine==3)
+     fbc:	93 e0       	ldi	r25, 0x03	; 3
+     fbe:	f9 16       	cp	r15, r25
+     fc0:	49 f5       	brne	.+82     	; 0x1014 <__stack+0x7b5>
+		{
+			if (TCNT0 >= 80)
+     fc2:	82 b7       	in	r24, 0x32	; 50
+     fc4:	80 35       	cpi	r24, 0x50	; 80
+     fc6:	e0 f0       	brcs	.+56     	; 0x1000 <__stack+0x7a1>
+			{
+				
+				PORTD =0xFF;
+     fc8:	72 ba       	out	0x12, r7	; 18
+     fca:	8f ef       	ldi	r24, 0xFF	; 255
+     fcc:	91 ee       	ldi	r25, 0xE1	; 225
+     fce:	a4 e0       	ldi	r26, 0x04	; 4
+     fd0:	81 50       	subi	r24, 0x01	; 1
+     fd2:	90 40       	sbci	r25, 0x00	; 0
+     fd4:	a0 40       	sbci	r26, 0x00	; 0
+     fd6:	e1 f7       	brne	.-8      	; 0xfd0 <__stack+0x771>
+     fd8:	00 c0       	rjmp	.+0      	; 0xfda <__stack+0x77b>
+     fda:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+     fdc:	12 ba       	out	0x12, r1	; 18
+     fde:	8f ef       	ldi	r24, 0xFF	; 255
+     fe0:	91 ee       	ldi	r25, 0xE1	; 225
+     fe2:	a4 e0       	ldi	r26, 0x04	; 4
+     fe4:	81 50       	subi	r24, 0x01	; 1
+     fe6:	90 40       	sbci	r25, 0x00	; 0
+     fe8:	a0 40       	sbci	r26, 0x00	; 0
+     fea:	e1 f7       	brne	.-8      	; 0xfe4 <__stack+0x785>
+     fec:	00 c0       	rjmp	.+0      	; 0xfee <__stack+0x78f>
+     fee:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+     ff0:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('Y',1);
+     ff4:	89 e5       	ldi	r24, 0x59	; 89
+     ff6:	6c 2f       	mov	r22, r28
+     ff8:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+     ffc:	12 be       	out	0x32, r1	; 50
+     ffe:	73 c1       	rjmp	.+742    	; 0x12e6 <__stack+0xa87>
+			
+			
+			else
+			{
+				
+				Send_C('Y',1);
+    1000:	89 e5       	ldi	r24, 0x59	; 89
+    1002:	6c 2f       	mov	r22, r28
+    1004:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+    1008:	80 e1       	ldi	r24, 0x10	; 16
+    100a:	60 e0       	ldi	r22, 0x00	; 0
+    100c:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+    1010:	12 be       	out	0x32, r1	; 50
+    1012:	bb c1       	rjmp	.+886    	; 0x138a <__stack+0xb2b>
+			}
+		}
+		
+		else if (nine==4)
+    1014:	94 e0       	ldi	r25, 0x04	; 4
+    1016:	f9 16       	cp	r15, r25
+    1018:	49 f5       	brne	.+82     	; 0x106c <__stack+0x80d>
+		{
+			if (TCNT0 >= 80)
+    101a:	82 b7       	in	r24, 0x32	; 50
+    101c:	80 35       	cpi	r24, 0x50	; 80
+    101e:	e0 f0       	brcs	.+56     	; 0x1058 <__stack+0x7f9>
+			{
+				
+				PORTD =0xFF;
+    1020:	72 ba       	out	0x12, r7	; 18
+    1022:	8f ef       	ldi	r24, 0xFF	; 255
+    1024:	91 ee       	ldi	r25, 0xE1	; 225
+    1026:	a4 e0       	ldi	r26, 0x04	; 4
+    1028:	81 50       	subi	r24, 0x01	; 1
+    102a:	90 40       	sbci	r25, 0x00	; 0
+    102c:	a0 40       	sbci	r26, 0x00	; 0
+    102e:	e1 f7       	brne	.-8      	; 0x1028 <__stack+0x7c9>
+    1030:	00 c0       	rjmp	.+0      	; 0x1032 <__stack+0x7d3>
+    1032:	00 00       	nop
+				_delay_ms(200);
+				PORTD =0;
+    1034:	12 ba       	out	0x12, r1	; 18
+    1036:	8f ef       	ldi	r24, 0xFF	; 255
+    1038:	91 ee       	ldi	r25, 0xE1	; 225
+    103a:	a4 e0       	ldi	r26, 0x04	; 4
+    103c:	81 50       	subi	r24, 0x01	; 1
+    103e:	90 40       	sbci	r25, 0x00	; 0
+    1040:	a0 40       	sbci	r26, 0x00	; 0
+    1042:	e1 f7       	brne	.-8      	; 0x103c <__stack+0x7dd>
+    1044:	00 c0       	rjmp	.+0      	; 0x1046 <__stack+0x7e7>
+    1046:	00 00       	nop
+				_delay_ms(200);
+				contol_x_y();
+    1048:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+				Send_C('Z',1);
+    104c:	8a e5       	ldi	r24, 0x5A	; 90
+    104e:	6c 2f       	mov	r22, r28
+    1050:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				TCNT0 =0;
+    1054:	12 be       	out	0x32, r1	; 50
+    1056:	0f c0       	rjmp	.+30     	; 0x1076 <__stack+0x817>
+			
+			
+			else
+			{
+				
+				Send_C('Z',1);
+    1058:	8a e5       	ldi	r24, 0x5A	; 90
+    105a:	6c 2f       	mov	r22, r28
+    105c:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				Send_C(0x10,0);
+    1060:	80 e1       	ldi	r24, 0x10	; 16
+    1062:	60 e0       	ldi	r22, 0x00	; 0
+    1064:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+    1068:	12 be       	out	0x32, r1	; 50
+    106a:	05 c0       	rjmp	.+10     	; 0x1076 <__stack+0x817>
+			}
+		}
+			
+		nine++;
+    106c:	f3 94       	inc	r15
+		
+		if (nine==5)
+    106e:	95 e0       	ldi	r25, 0x05	; 5
+    1070:	f9 16       	cp	r15, r25
+    1072:	09 f0       	breq	.+2      	; 0x1076 <__stack+0x817>
+    1074:	e3 c0       	rjmp	.+454    	; 0x123c <__stack+0x9dd>
+		{
+			nine=0;
+    1076:	ff 24       	eor	r15, r15
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+    1078:	dd 24       	eor	r13, r13
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+    107a:	ee 24       	eor	r14, r14
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+    107c:	cc 24       	eor	r12, r12
+	else if ((c==2) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+    107e:	bb 24       	eor	r11, r11
+
+	else if ((c==2) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+    1080:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==2))
+	{
+		two=0;
+		three=0;
+    1082:	99 24       	eor	r9, r9
+	                                 nine key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==2))
+	{
+		two=0;
+    1084:	88 24       	eor	r8, r8
+    1086:	eb c0       	rjmp	.+470    	; 0x125e <__stack+0x9ff>
+	
+	/*---------------------------------------------------------------------------------------------------------
+	                                 ten key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==0) & (j==3))
+    1088:	2c 2f       	mov	r18, r28
+    108a:	93 30       	cpi	r25, 0x03	; 3
+    108c:	09 f0       	breq	.+2      	; 0x1090 <__stack+0x831>
+    108e:	20 e0       	ldi	r18, 0x00	; 0
+    1090:	88 23       	and	r24, r24
+    1092:	59 f1       	breq	.+86     	; 0x10ea <__stack+0x88b>
+    1094:	22 23       	and	r18, r18
+    1096:	49 f1       	breq	.+82     	; 0x10ea <__stack+0x88b>
+	{	
+		
+		   if (TCNT0 >= 80)
+    1098:	82 b7       	in	r24, 0x32	; 50
+    109a:	80 35       	cpi	r24, 0x50	; 80
+    109c:	e0 f0       	brcs	.+56     	; 0x10d6 <__stack+0x877>
+		   {
+			   
+			   PORTD =0xFF;
+    109e:	72 ba       	out	0x12, r7	; 18
+    10a0:	8f ef       	ldi	r24, 0xFF	; 255
+    10a2:	91 ee       	ldi	r25, 0xE1	; 225
+    10a4:	a4 e0       	ldi	r26, 0x04	; 4
+    10a6:	81 50       	subi	r24, 0x01	; 1
+    10a8:	90 40       	sbci	r25, 0x00	; 0
+    10aa:	a0 40       	sbci	r26, 0x00	; 0
+    10ac:	e1 f7       	brne	.-8      	; 0x10a6 <__stack+0x847>
+    10ae:	00 c0       	rjmp	.+0      	; 0x10b0 <__stack+0x851>
+    10b0:	00 00       	nop
+			   _delay_ms(200);
+			   PORTD =0;
+    10b2:	12 ba       	out	0x12, r1	; 18
+    10b4:	8f ef       	ldi	r24, 0xFF	; 255
+    10b6:	91 ee       	ldi	r25, 0xE1	; 225
+    10b8:	a4 e0       	ldi	r26, 0x04	; 4
+    10ba:	81 50       	subi	r24, 0x01	; 1
+    10bc:	90 40       	sbci	r25, 0x00	; 0
+    10be:	a0 40       	sbci	r26, 0x00	; 0
+    10c0:	e1 f7       	brne	.-8      	; 0x10ba <__stack+0x85b>
+    10c2:	00 c0       	rjmp	.+0      	; 0x10c4 <__stack+0x865>
+    10c4:	00 00       	nop
+			   _delay_ms(200);
+			   contol_x_y();
+    10c6:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+			   Send_C('*',1);
+    10ca:	8a e2       	ldi	r24, 0x2A	; 42
+    10cc:	6c 2f       	mov	r22, r28
+    10ce:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   TCNT0 =0;
+    10d2:	12 be       	out	0x32, r1	; 50
+    10d4:	c4 c0       	rjmp	.+392    	; 0x125e <__stack+0x9ff>
+		   
+		   
+		   else
+		   {
+			   
+			   Send_C('*',1);
+    10d6:	8a e2       	ldi	r24, 0x2A	; 42
+    10d8:	6c 2f       	mov	r22, r28
+    10da:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   Send_C(0x10,0);
+    10de:	80 e1       	ldi	r24, 0x10	; 16
+    10e0:	60 e0       	ldi	r22, 0x00	; 0
+    10e2:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   //Send_C(0x07,0);
+			   TCNT0 =0;
+    10e6:	12 be       	out	0x32, r1	; 50
+    10e8:	ba c0       	rjmp	.+372    	; 0x125e <__stack+0x9ff>
+	
+	/*---------------------------------------------------------------------------------------------------------
+	                                 eleven key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==3))
+    10ea:	44 23       	and	r20, r20
+    10ec:	09 f4       	brne	.+2      	; 0x10f0 <__stack+0x891>
+    10ee:	43 c0       	rjmp	.+134    	; 0x1176 <__stack+0x917>
+    10f0:	22 23       	and	r18, r18
+    10f2:	09 f4       	brne	.+2      	; 0x10f6 <__stack+0x897>
+    10f4:	40 c0       	rjmp	.+128    	; 0x1176 <__stack+0x917>
+		eight=0;
+		nine=0;
+		ten=0;
+		twelve=0;
+		
+		if(zero==0)
+    10f6:	33 20       	and	r3, r3
+    10f8:	51 f5       	brne	.+84     	; 0x114e <__stack+0x8ef>
+		{
+		   if (TCNT0 >= 80)
+    10fa:	82 b7       	in	r24, 0x32	; 50
+    10fc:	80 35       	cpi	r24, 0x50	; 80
+    10fe:	e0 f0       	brcs	.+56     	; 0x1138 <__stack+0x8d9>
+		   {
+			   
+			   PORTD =0xFF;
+    1100:	72 ba       	out	0x12, r7	; 18
+    1102:	8f ef       	ldi	r24, 0xFF	; 255
+    1104:	91 ee       	ldi	r25, 0xE1	; 225
+    1106:	a4 e0       	ldi	r26, 0x04	; 4
+    1108:	81 50       	subi	r24, 0x01	; 1
+    110a:	90 40       	sbci	r25, 0x00	; 0
+    110c:	a0 40       	sbci	r26, 0x00	; 0
+    110e:	e1 f7       	brne	.-8      	; 0x1108 <__stack+0x8a9>
+    1110:	00 c0       	rjmp	.+0      	; 0x1112 <__stack+0x8b3>
+    1112:	00 00       	nop
+			   _delay_ms(200);
+			   PORTD =0;
+    1114:	12 ba       	out	0x12, r1	; 18
+    1116:	8f ef       	ldi	r24, 0xFF	; 255
+    1118:	91 ee       	ldi	r25, 0xE1	; 225
+    111a:	a4 e0       	ldi	r26, 0x04	; 4
+    111c:	81 50       	subi	r24, 0x01	; 1
+    111e:	90 40       	sbci	r25, 0x00	; 0
+    1120:	a0 40       	sbci	r26, 0x00	; 0
+    1122:	e1 f7       	brne	.-8      	; 0x111c <__stack+0x8bd>
+    1124:	00 c0       	rjmp	.+0      	; 0x1126 <__stack+0x8c7>
+    1126:	00 00       	nop
+			   _delay_ms(200);
+			   contol_x_y();
+    1128:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+			   Send_C('0',1);
+    112c:	80 e3       	ldi	r24, 0x30	; 48
+    112e:	6c 2f       	mov	r22, r28
+    1130:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   TCNT0 =0;
+    1134:	12 be       	out	0x32, r1	; 50
+    1136:	e0 c0       	rjmp	.+448    	; 0x12f8 <__stack+0xa99>
+		   
+		   
+		   else
+		   {
+			   
+			   Send_C('0',1);
+    1138:	80 e3       	ldi	r24, 0x30	; 48
+    113a:	6c 2f       	mov	r22, r28
+    113c:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   Send_C(0x10,0);
+    1140:	80 e1       	ldi	r24, 0x10	; 16
+    1142:	60 e0       	ldi	r22, 0x00	; 0
+    1144:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			   TCNT0 =0;
+    1148:	12 be       	out	0x32, r1	; 50
+		else if (zero==1)
+		{
+			 contol_x_y();
+		}
+		
+		zero++;
+    114a:	33 94       	inc	r3
+    114c:	0b c0       	rjmp	.+22     	; 0x1164 <__stack+0x905>
+			   Send_C(0x10,0);
+			   TCNT0 =0;
+		   }	
+		}
+		
+		else if (zero==1)
+    114e:	91 e0       	ldi	r25, 0x01	; 1
+    1150:	39 16       	cp	r3, r25
+    1152:	19 f4       	brne	.+6      	; 0x115a <__stack+0x8fb>
+		{
+			 contol_x_y();
+    1154:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+    1158:	cf c0       	rjmp	.+414    	; 0x12f8 <__stack+0xa99>
+		}
+		
+		zero++;
+    115a:	33 94       	inc	r3
+		
+		if (zero==3)
+    115c:	a3 e0       	ldi	r26, 0x03	; 3
+    115e:	3a 16       	cp	r3, r26
+    1160:	09 f4       	brne	.+2      	; 0x1164 <__stack+0x905>
+    1162:	74 c0       	rjmp	.+232    	; 0x124c <__stack+0x9ed>
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    1164:	ff 24       	eor	r15, r15
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+    1166:	dd 24       	eor	r13, r13
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+    1168:	ee 24       	eor	r14, r14
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+    116a:	cc 24       	eor	r12, r12
+	else if ((c==1) & (j==3))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+    116c:	bb 24       	eor	r11, r11
+
+	else if ((c==1) & (j==3))
+	{
+		two=0;
+		three=0;
+		four=0;
+    116e:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==3))
+	{
+		two=0;
+		three=0;
+    1170:	99 24       	eor	r9, r9
+	                                 eleven key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==3))
+	{
+		two=0;
+    1172:	88 24       	eor	r8, r8
+    1174:	74 c0       	rjmp	.+232    	; 0x125e <__stack+0x9ff>
+	
+	/*---------------------------------------------------------------------------------------------------------
+	                                 twelve key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==3))
+    1176:	33 23       	and	r19, r19
+    1178:	09 f4       	brne	.+2      	; 0x117c <__stack+0x91d>
+    117a:	71 c0       	rjmp	.+226    	; 0x125e <__stack+0x9ff>
+    117c:	22 23       	and	r18, r18
+    117e:	09 f4       	brne	.+2      	; 0x1182 <__stack+0x923>
+    1180:	6e c0       	rjmp	.+220    	; 0x125e <__stack+0x9ff>
+	{
+		
+		
+		  if (TCNT0 >= 80)
+    1182:	82 b7       	in	r24, 0x32	; 50
+    1184:	80 35       	cpi	r24, 0x50	; 80
+    1186:	c0 f0       	brcs	.+48     	; 0x11b8 <__stack+0x959>
+		  {
+			  
+			  PORTD =0xFF;
+    1188:	72 ba       	out	0x12, r7	; 18
+    118a:	8f ef       	ldi	r24, 0xFF	; 255
+    118c:	91 ee       	ldi	r25, 0xE1	; 225
+    118e:	a4 e0       	ldi	r26, 0x04	; 4
+    1190:	81 50       	subi	r24, 0x01	; 1
+    1192:	90 40       	sbci	r25, 0x00	; 0
+    1194:	a0 40       	sbci	r26, 0x00	; 0
+    1196:	e1 f7       	brne	.-8      	; 0x1190 <__stack+0x931>
+    1198:	00 c0       	rjmp	.+0      	; 0x119a <__stack+0x93b>
+    119a:	00 00       	nop
+			  _delay_ms(200);
+			  PORTD =0;
+    119c:	12 ba       	out	0x12, r1	; 18
+    119e:	8f ef       	ldi	r24, 0xFF	; 255
+    11a0:	91 ee       	ldi	r25, 0xE1	; 225
+    11a2:	a4 e0       	ldi	r26, 0x04	; 4
+    11a4:	81 50       	subi	r24, 0x01	; 1
+    11a6:	90 40       	sbci	r25, 0x00	; 0
+    11a8:	a0 40       	sbci	r26, 0x00	; 0
+    11aa:	e1 f7       	brne	.-8      	; 0x11a4 <__stack+0x945>
+    11ac:	00 c0       	rjmp	.+0      	; 0x11ae <__stack+0x94f>
+    11ae:	00 00       	nop
+			  _delay_ms(200);
+			  contol_x_y();
+    11b0:	0e 94 c8 00 	call	0x190	; 0x190 <contol_x_y>
+			  TCNT0 =0;
+    11b4:	12 be       	out	0x32, r1	; 50
+    11b6:	53 c0       	rjmp	.+166    	; 0x125e <__stack+0x9ff>
+		  }
+		  
+		  else
+		  {
+			  
+			  Send_C('#',1);
+    11b8:	83 e2       	ldi	r24, 0x23	; 35
+    11ba:	6c 2f       	mov	r22, r28
+    11bc:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  Send_C(0x10,0);
+    11c0:	80 e1       	ldi	r24, 0x10	; 16
+    11c2:	60 e0       	ldi	r22, 0x00	; 0
+    11c4:	0e 94 56 00 	call	0xac	; 0xac <Send_C>
+			  TCNT0 =0;
+    11c8:	12 be       	out	0x32, r1	; 50
+    11ca:	49 c0       	rjmp	.+146    	; 0x125e <__stack+0x9ff>
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    11cc:	ff 24       	eor	r15, r15
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+    11ce:	dd 24       	eor	r13, r13
+		
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+    11d0:	ee 24       	eor	r14, r14
+	{
+		
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+    11d2:	cc 24       	eor	r12, r12
+	else if ((c==1) & (j==0))
+	{
+		
+		three=0;
+		four=0;
+		five=0;
+    11d4:	bb 24       	eor	r11, r11
+
+	else if ((c==1) & (j==0))
+	{
+		
+		three=0;
+		four=0;
+    11d6:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==0))
+	{
+		
+		three=0;
+    11d8:	99 24       	eor	r9, r9
+    11da:	41 c0       	rjmp	.+130    	; 0x125e <__stack+0x9ff>
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    11dc:	ff 24       	eor	r15, r15
+		two=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+    11de:	dd 24       	eor	r13, r13
+		
+		two=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+    11e0:	ee 24       	eor	r14, r14
+	{
+		
+		two=0;
+		four=0;
+		five=0;
+		six=0;
+    11e2:	cc 24       	eor	r12, r12
+	else if ((c==2) & (j==0))
+	{
+		
+		two=0;
+		four=0;
+		five=0;
+    11e4:	bb 24       	eor	r11, r11
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==2) & (j==0))
+	{
+		
+		two=0;
+		four=0;
+    11e6:	aa 24       	eor	r10, r10
+	                                 third key
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==2) & (j==0))
+	{
+		
+		two=0;
+    11e8:	88 24       	eor	r8, r8
+    11ea:	39 c0       	rjmp	.+114    	; 0x125e <__stack+0x9ff>
+		three=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    11ec:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+    11ee:	dd 24       	eor	r13, r13
+	{
+		two=0;
+		three=0;
+		five=0;
+		six=0;
+		seven=0;
+    11f0:	ee 24       	eor	r14, r14
+	else if ((c==0) & (j==1))
+	{
+		two=0;
+		three=0;
+		five=0;
+		six=0;
+    11f2:	cc 24       	eor	r12, r12
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==0) & (j==1))
+	{
+		two=0;
+		three=0;
+		five=0;
+    11f4:	bb 24       	eor	r11, r11
+	                                 fourth key
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==0) & (j==1))
+	{
+		two=0;
+		three=0;
+    11f6:	99 24       	eor	r9, r9
+	/*---------------------------------------------------------------------------------------------------------
+	                                 fourth key
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==0) & (j==1))
+	{
+		two=0;
+    11f8:	88 24       	eor	r8, r8
+    11fa:	31 c0       	rjmp	.+98     	; 0x125e <__stack+0x9ff>
+		three=0;
+		four=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    11fc:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		four=0;
+		six=0;
+		seven=0;
+		eight=0;
+    11fe:	dd 24       	eor	r13, r13
+	{
+		two=0;
+		three=0;
+		four=0;
+		six=0;
+		seven=0;
+    1200:	ee 24       	eor	r14, r14
+	else if ((c==1) & (j==1))
+	{
+		two=0;
+		three=0;
+		four=0;
+		six=0;
+    1202:	cc 24       	eor	r12, r12
+
+	else if ((c==1) & (j==1))
+	{
+		two=0;
+		three=0;
+		four=0;
+    1204:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==1))
+	{
+		two=0;
+		three=0;
+    1206:	99 24       	eor	r9, r9
+	                                 five key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==1))
+	{
+		two=0;
+    1208:	88 24       	eor	r8, r8
+    120a:	29 c0       	rjmp	.+82     	; 0x125e <__stack+0x9ff>
+		three=0;
+		four=0;
+		five=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    120c:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		seven=0;
+		eight=0;
+    120e:	dd 24       	eor	r13, r13
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		seven=0;
+    1210:	ee 24       	eor	r14, r14
+	else if ((c==2) & (j==1))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+    1212:	bb 24       	eor	r11, r11
+
+	else if ((c==2) & (j==1))
+	{
+		two=0;
+		three=0;
+		four=0;
+    1214:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==1))
+	{
+		two=0;
+		three=0;
+    1216:	99 24       	eor	r9, r9
+	                                 six key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==1))
+	{
+		two=0;
+    1218:	88 24       	eor	r8, r8
+    121a:	21 c0       	rjmp	.+66     	; 0x125e <__stack+0x9ff>
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		eight=0;
+		nine=0;
+    121c:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		eight=0;
+    121e:	dd 24       	eor	r13, r13
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+    1220:	cc 24       	eor	r12, r12
+	else if ((c==0) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+    1222:	bb 24       	eor	r11, r11
+
+	else if ((c==0) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+    1224:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==0) & (j==2))
+	{
+		two=0;
+		three=0;
+    1226:	99 24       	eor	r9, r9
+	                                 seven key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==0) & (j==2))
+	{
+		two=0;
+    1228:	88 24       	eor	r8, r8
+    122a:	19 c0       	rjmp	.+50     	; 0x125e <__stack+0x9ff>
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		nine=0;
+    122c:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+    122e:	ee 24       	eor	r14, r14
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+    1230:	cc 24       	eor	r12, r12
+	else if ((c==1) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+    1232:	bb 24       	eor	r11, r11
+
+	else if ((c==1) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+    1234:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==2))
+	{
+		two=0;
+		three=0;
+    1236:	99 24       	eor	r9, r9
+	                                 eight key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==2))
+	{
+		two=0;
+    1238:	88 24       	eor	r8, r8
+    123a:	11 c0       	rjmp	.+34     	; 0x125e <__stack+0x9ff>
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+    123c:	dd 24       	eor	r13, r13
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+    123e:	ee 24       	eor	r14, r14
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+    1240:	cc 24       	eor	r12, r12
+	else if ((c==2) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+    1242:	bb 24       	eor	r11, r11
+
+	else if ((c==2) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+    1244:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==2))
+	{
+		two=0;
+		three=0;
+    1246:	99 24       	eor	r9, r9
+	                                 nine key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==2))
+	{
+		two=0;
+    1248:	88 24       	eor	r8, r8
+    124a:	09 c0       	rjmp	.+18     	; 0x125e <__stack+0x9ff>
+		
+		zero++;
+		
+		if (zero==3)
+		{
+			zero=0;
+    124c:	33 24       	eor	r3, r3
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    124e:	ff 24       	eor	r15, r15
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+    1250:	dd 24       	eor	r13, r13
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+    1252:	ee 24       	eor	r14, r14
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+    1254:	cc 24       	eor	r12, r12
+	else if ((c==1) & (j==3))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+    1256:	bb 24       	eor	r11, r11
+
+	else if ((c==1) & (j==3))
+	{
+		two=0;
+		three=0;
+		four=0;
+    1258:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==3))
+	{
+		two=0;
+		three=0;
+    125a:	99 24       	eor	r9, r9
+	                                 eleven key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==3))
+	{
+		two=0;
+    125c:	88 24       	eor	r8, r8
+	  }		  
+	  
+	  
+	  }	
+	 
+	  while((PINA & 0X0F)!=0x0f); 
+    125e:	89 b3       	in	r24, 0x19	; 25
+    1260:	8f 70       	andi	r24, 0x0F	; 15
+    1262:	8f 30       	cpi	r24, 0x0F	; 15
+    1264:	e1 f7       	brne	.-8      	; 0x125e <__stack+0x9ff>
+    1266:	0e c8       	rjmp	.-4068   	; 0x284 <main+0x80>
+				TCNT0 =0;
+			}
+		}
+			
+		
+		two++;
+    1268:	83 94       	inc	r8
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    126a:	ff 24       	eor	r15, r15
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+    126c:	dd 24       	eor	r13, r13
+		
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+    126e:	ee 24       	eor	r14, r14
+	{
+		
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+    1270:	cc 24       	eor	r12, r12
+	else if ((c==1) & (j==0))
+	{
+		
+		three=0;
+		four=0;
+		five=0;
+    1272:	bb 24       	eor	r11, r11
+
+	else if ((c==1) & (j==0))
+	{
+		
+		three=0;
+		four=0;
+    1274:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==0))
+	{
+		
+		three=0;
+    1276:	99 24       	eor	r9, r9
+    1278:	f2 cf       	rjmp	.-28     	; 0x125e <__stack+0x9ff>
+				TCNT0 =0;
+			}
+		}
+		
+		
+		three++;
+    127a:	93 94       	inc	r9
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    127c:	ff 24       	eor	r15, r15
+		two=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+    127e:	dd 24       	eor	r13, r13
+		
+		two=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+    1280:	ee 24       	eor	r14, r14
+	{
+		
+		two=0;
+		four=0;
+		five=0;
+		six=0;
+    1282:	cc 24       	eor	r12, r12
+	else if ((c==2) & (j==0))
+	{
+		
+		two=0;
+		four=0;
+		five=0;
+    1284:	bb 24       	eor	r11, r11
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==2) & (j==0))
+	{
+		
+		two=0;
+		four=0;
+    1286:	aa 24       	eor	r10, r10
+	                                 third key
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==2) & (j==0))
+	{
+		
+		two=0;
+    1288:	88 24       	eor	r8, r8
+    128a:	e9 cf       	rjmp	.-46     	; 0x125e <__stack+0x9ff>
+				TCNT0 =0;
+			}
+		}
+		
+		
+		four++;
+    128c:	a3 94       	inc	r10
+		three=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    128e:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+    1290:	dd 24       	eor	r13, r13
+	{
+		two=0;
+		three=0;
+		five=0;
+		six=0;
+		seven=0;
+    1292:	ee 24       	eor	r14, r14
+	else if ((c==0) & (j==1))
+	{
+		two=0;
+		three=0;
+		five=0;
+		six=0;
+    1294:	cc 24       	eor	r12, r12
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==0) & (j==1))
+	{
+		two=0;
+		three=0;
+		five=0;
+    1296:	bb 24       	eor	r11, r11
+	                                 fourth key
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==0) & (j==1))
+	{
+		two=0;
+		three=0;
+    1298:	99 24       	eor	r9, r9
+	/*---------------------------------------------------------------------------------------------------------
+	                                 fourth key
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==0) & (j==1))
+	{
+		two=0;
+    129a:	88 24       	eor	r8, r8
+    129c:	e0 cf       	rjmp	.-64     	; 0x125e <__stack+0x9ff>
+				TCNT0 =0;
+			}
+		}
+			
+		
+		five++;
+    129e:	b3 94       	inc	r11
+		three=0;
+		four=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    12a0:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		four=0;
+		six=0;
+		seven=0;
+		eight=0;
+    12a2:	dd 24       	eor	r13, r13
+	{
+		two=0;
+		three=0;
+		four=0;
+		six=0;
+		seven=0;
+    12a4:	ee 24       	eor	r14, r14
+	else if ((c==1) & (j==1))
+	{
+		two=0;
+		three=0;
+		four=0;
+		six=0;
+    12a6:	cc 24       	eor	r12, r12
+
+	else if ((c==1) & (j==1))
+	{
+		two=0;
+		three=0;
+		four=0;
+    12a8:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==1))
+	{
+		two=0;
+		three=0;
+    12aa:	99 24       	eor	r9, r9
+	                                 five key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==1))
+	{
+		two=0;
+    12ac:	88 24       	eor	r8, r8
+    12ae:	d7 cf       	rjmp	.-82     	; 0x125e <__stack+0x9ff>
+				TCNT0 =0;
+			}
+		}
+			
+		
+		six++;
+    12b0:	c3 94       	inc	r12
+		three=0;
+		four=0;
+		five=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    12b2:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		seven=0;
+		eight=0;
+    12b4:	dd 24       	eor	r13, r13
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		seven=0;
+    12b6:	ee 24       	eor	r14, r14
+	else if ((c==2) & (j==1))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+    12b8:	bb 24       	eor	r11, r11
+
+	else if ((c==2) & (j==1))
+	{
+		two=0;
+		three=0;
+		four=0;
+    12ba:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==1))
+	{
+		two=0;
+		three=0;
+    12bc:	99 24       	eor	r9, r9
+	                                 six key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==1))
+	{
+		two=0;
+    12be:	88 24       	eor	r8, r8
+    12c0:	ce cf       	rjmp	.-100    	; 0x125e <__stack+0x9ff>
+				TCNT0 =0;
+			}
+		}
+			
+		
+		seven++;
+    12c2:	e3 94       	inc	r14
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		eight=0;
+		nine=0;
+    12c4:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		eight=0;
+    12c6:	dd 24       	eor	r13, r13
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+    12c8:	cc 24       	eor	r12, r12
+	else if ((c==0) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+    12ca:	bb 24       	eor	r11, r11
+
+	else if ((c==0) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+    12cc:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==0) & (j==2))
+	{
+		two=0;
+		three=0;
+    12ce:	99 24       	eor	r9, r9
+	                                 seven key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==0) & (j==2))
+	{
+		two=0;
+    12d0:	88 24       	eor	r8, r8
+    12d2:	c5 cf       	rjmp	.-118    	; 0x125e <__stack+0x9ff>
+				TCNT0 =0;
+			}
+		}
+			
+		
+		eight++;
+    12d4:	d3 94       	inc	r13
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		nine=0;
+    12d6:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+    12d8:	ee 24       	eor	r14, r14
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+    12da:	cc 24       	eor	r12, r12
+	else if ((c==1) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+    12dc:	bb 24       	eor	r11, r11
+
+	else if ((c==1) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+    12de:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==2))
+	{
+		two=0;
+		three=0;
+    12e0:	99 24       	eor	r9, r9
+	                                 eight key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==2))
+	{
+		two=0;
+    12e2:	88 24       	eor	r8, r8
+    12e4:	bc cf       	rjmp	.-136    	; 0x125e <__stack+0x9ff>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+			}
+		}
+			
+		nine++;
+    12e6:	f3 94       	inc	r15
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+    12e8:	dd 24       	eor	r13, r13
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+    12ea:	ee 24       	eor	r14, r14
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+    12ec:	cc 24       	eor	r12, r12
+	else if ((c==2) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+    12ee:	bb 24       	eor	r11, r11
+
+	else if ((c==2) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+    12f0:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==2))
+	{
+		two=0;
+		three=0;
+    12f2:	99 24       	eor	r9, r9
+	                                 nine key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==2))
+	{
+		two=0;
+    12f4:	88 24       	eor	r8, r8
+    12f6:	b3 cf       	rjmp	.-154    	; 0x125e <__stack+0x9ff>
+		else if (zero==1)
+		{
+			 contol_x_y();
+		}
+		
+		zero++;
+    12f8:	33 94       	inc	r3
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    12fa:	ff 24       	eor	r15, r15
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+    12fc:	dd 24       	eor	r13, r13
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+    12fe:	ee 24       	eor	r14, r14
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+    1300:	cc 24       	eor	r12, r12
+	else if ((c==1) & (j==3))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+    1302:	bb 24       	eor	r11, r11
+
+	else if ((c==1) & (j==3))
+	{
+		two=0;
+		three=0;
+		four=0;
+    1304:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==3))
+	{
+		two=0;
+		three=0;
+    1306:	99 24       	eor	r9, r9
+	                                 eleven key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==3))
+	{
+		two=0;
+    1308:	88 24       	eor	r8, r8
+    130a:	a9 cf       	rjmp	.-174    	; 0x125e <__stack+0x9ff>
+				TCNT0 =0;
+			}
+		}
+			
+		
+		two++;
+    130c:	83 94       	inc	r8
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    130e:	ff 24       	eor	r15, r15
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+    1310:	dd 24       	eor	r13, r13
+		
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+    1312:	ee 24       	eor	r14, r14
+	{
+		
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+    1314:	cc 24       	eor	r12, r12
+	else if ((c==1) & (j==0))
+	{
+		
+		three=0;
+		four=0;
+		five=0;
+    1316:	bb 24       	eor	r11, r11
+
+	else if ((c==1) & (j==0))
+	{
+		
+		three=0;
+		four=0;
+    1318:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==0))
+	{
+		
+		three=0;
+    131a:	99 24       	eor	r9, r9
+    131c:	a0 cf       	rjmp	.-192    	; 0x125e <__stack+0x9ff>
+				TCNT0 =0;
+			}
+		}
+		
+		
+		three++;
+    131e:	93 94       	inc	r9
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    1320:	ff 24       	eor	r15, r15
+		two=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+    1322:	dd 24       	eor	r13, r13
+		
+		two=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+    1324:	ee 24       	eor	r14, r14
+	{
+		
+		two=0;
+		four=0;
+		five=0;
+		six=0;
+    1326:	cc 24       	eor	r12, r12
+	else if ((c==2) & (j==0))
+	{
+		
+		two=0;
+		four=0;
+		five=0;
+    1328:	bb 24       	eor	r11, r11
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==2) & (j==0))
+	{
+		
+		two=0;
+		four=0;
+    132a:	aa 24       	eor	r10, r10
+	                                 third key
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==2) & (j==0))
+	{
+		
+		two=0;
+    132c:	88 24       	eor	r8, r8
+    132e:	97 cf       	rjmp	.-210    	; 0x125e <__stack+0x9ff>
+				TCNT0 =0;
+			}
+		}
+		
+		
+		four++;
+    1330:	a3 94       	inc	r10
+		three=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    1332:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+    1334:	dd 24       	eor	r13, r13
+	{
+		two=0;
+		three=0;
+		five=0;
+		six=0;
+		seven=0;
+    1336:	ee 24       	eor	r14, r14
+	else if ((c==0) & (j==1))
+	{
+		two=0;
+		three=0;
+		five=0;
+		six=0;
+    1338:	cc 24       	eor	r12, r12
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==0) & (j==1))
+	{
+		two=0;
+		three=0;
+		five=0;
+    133a:	bb 24       	eor	r11, r11
+	                                 fourth key
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==0) & (j==1))
+	{
+		two=0;
+		three=0;
+    133c:	99 24       	eor	r9, r9
+	/*---------------------------------------------------------------------------------------------------------
+	                                 fourth key
+	----------------------------------------------------------------------------------------------------------*/
+	else if ((c==0) & (j==1))
+	{
+		two=0;
+    133e:	88 24       	eor	r8, r8
+    1340:	8e cf       	rjmp	.-228    	; 0x125e <__stack+0x9ff>
+				TCNT0 =0;
+			}
+		}
+			
+		
+		five++;
+    1342:	b3 94       	inc	r11
+		three=0;
+		four=0;
+		six=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    1344:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		four=0;
+		six=0;
+		seven=0;
+		eight=0;
+    1346:	dd 24       	eor	r13, r13
+	{
+		two=0;
+		three=0;
+		four=0;
+		six=0;
+		seven=0;
+    1348:	ee 24       	eor	r14, r14
+	else if ((c==1) & (j==1))
+	{
+		two=0;
+		three=0;
+		four=0;
+		six=0;
+    134a:	cc 24       	eor	r12, r12
+
+	else if ((c==1) & (j==1))
+	{
+		two=0;
+		three=0;
+		four=0;
+    134c:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==1))
+	{
+		two=0;
+		three=0;
+    134e:	99 24       	eor	r9, r9
+	                                 five key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==1))
+	{
+		two=0;
+    1350:	88 24       	eor	r8, r8
+    1352:	85 cf       	rjmp	.-246    	; 0x125e <__stack+0x9ff>
+				TCNT0 =0;
+			}
+		}
+			
+		
+		six++;
+    1354:	c3 94       	inc	r12
+		three=0;
+		four=0;
+		five=0;
+		seven=0;
+		eight=0;
+		nine=0;
+    1356:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		seven=0;
+		eight=0;
+    1358:	dd 24       	eor	r13, r13
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		seven=0;
+    135a:	ee 24       	eor	r14, r14
+	else if ((c==2) & (j==1))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+    135c:	bb 24       	eor	r11, r11
+
+	else if ((c==2) & (j==1))
+	{
+		two=0;
+		three=0;
+		four=0;
+    135e:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==1))
+	{
+		two=0;
+		three=0;
+    1360:	99 24       	eor	r9, r9
+	                                 six key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==1))
+	{
+		two=0;
+    1362:	88 24       	eor	r8, r8
+    1364:	7c cf       	rjmp	.-264    	; 0x125e <__stack+0x9ff>
+				TCNT0 =0;
+			}
+		}
+			
+		
+		seven++;
+    1366:	e3 94       	inc	r14
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		eight=0;
+		nine=0;
+    1368:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		eight=0;
+    136a:	dd 24       	eor	r13, r13
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+    136c:	cc 24       	eor	r12, r12
+	else if ((c==0) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+    136e:	bb 24       	eor	r11, r11
+
+	else if ((c==0) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+    1370:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==0) & (j==2))
+	{
+		two=0;
+		three=0;
+    1372:	99 24       	eor	r9, r9
+	                                 seven key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==0) & (j==2))
+	{
+		two=0;
+    1374:	88 24       	eor	r8, r8
+    1376:	73 cf       	rjmp	.-282    	; 0x125e <__stack+0x9ff>
+				TCNT0 =0;
+			}
+		}
+			
+		
+		eight++;
+    1378:	d3 94       	inc	r13
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		nine=0;
+    137a:	ff 24       	eor	r15, r15
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+    137c:	ee 24       	eor	r14, r14
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+    137e:	cc 24       	eor	r12, r12
+	else if ((c==1) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+    1380:	bb 24       	eor	r11, r11
+
+	else if ((c==1) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+    1382:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==2))
+	{
+		two=0;
+		three=0;
+    1384:	99 24       	eor	r9, r9
+	                                 eight key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==1) & (j==2))
+	{
+		two=0;
+    1386:	88 24       	eor	r8, r8
+    1388:	6a cf       	rjmp	.-300    	; 0x125e <__stack+0x9ff>
+				//Send_C(0x07,0);
+				TCNT0 =0;
+			}
+		}
+			
+		nine++;
+    138a:	f3 94       	inc	r15
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+		eight=0;
+    138c:	dd 24       	eor	r13, r13
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+		seven=0;
+    138e:	ee 24       	eor	r14, r14
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+		six=0;
+    1390:	cc 24       	eor	r12, r12
+	else if ((c==2) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+		five=0;
+    1392:	bb 24       	eor	r11, r11
+
+	else if ((c==2) & (j==2))
+	{
+		two=0;
+		three=0;
+		four=0;
+    1394:	aa 24       	eor	r10, r10
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==2))
+	{
+		two=0;
+		three=0;
+    1396:	99 24       	eor	r9, r9
+	                                 nine key
+	----------------------------------------------------------------------------------------------------------*/
+
+	else if ((c==2) & (j==2))
+	{
+		two=0;
+    1398:	88 24       	eor	r8, r8
+    139a:	61 cf       	rjmp	.-318    	; 0x125e <__stack+0x9ff>
+
+0000139c <_exit>:
+    139c:	f8 94       	cli
+
+0000139e <__stop_program>:
+    139e:	ff cf       	rjmp	.-2      	; 0x139e <__stop_program>
